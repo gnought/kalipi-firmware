@@ -19425,7 +19425,7 @@ c0443bec t sdhci_kunmap_atomic
 c0443c8c T sdhci_send_command
 c0444834 t sdhci_request
 c04449a0 T sdhci_suspend_host
-c0444a50 t sdhci_do_get_cd
+c04.4.50-Re4son t sdhci_do_get_cd
 c0444ad4 t sdhci_get_cd
 c0444b18 t sdhci_do_reset
 c0444ba0 t sdhci_card_event
@@ -21829,7 +21829,7 @@ c04d44a0 T __ip_options_echo
 c04d48c0 T ip_options_fragment
 c04d4984 T ip_options_undo
 c04d4aa0 T ip_options_get_from_user
-c04d4b50 T ip_options_get
+c04.4.50-Re4son T ip_options_get
 c04d4bc0 T ip_forward_options
 c04d4d70 t dst_output
 c04d4d98 T ip_send_check
@@ -22114,7 +22114,7 @@ c04f440c t tcp4_proc_init_net
 c04f4430 T tcp_proc_unregister
 c04f4458 t tcp4_proc_exit_net
 c04f4484 t tcp4_seq_show
-c04f4850 t tcp_v4_init_sock
+c04.4.50-Re4son t tcp_v4_init_sock
 c04f4880 t tcp_sk_exit_batch
 c04f48b0 t tcp_sk_exit
 c04f48ec t tcp_sk_init

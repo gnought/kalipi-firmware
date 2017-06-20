@@ -17980,7 +17980,7 @@
 80414490 T usb_hcd_alloc_bandwidth
 80414794 T usb_hcd_disable_endpoint
 804147d4 T usb_hcd_reset_endpoint
-80414850 T usb_hcd_synchronize_unlinks
+804.4.50-Re4son T usb_hcd_synchronize_unlinks
 80414898 T usb_hcd_get_frame_number
 804148d4 T hcd_bus_resume
 80414a68 T hcd_bus_suspend
@@ -19405,7 +19405,7 @@
 80464e80 t of_thermal_set_trip_temp
 80464ec4 t of_thermal_get_trip_hyst
 80464f0c t of_thermal_set_trip_hyst
-80464f50 t of_thermal_get_crit_temp
+804.4.50-Re4son t of_thermal_get_crit_temp
 80464fc8 T of_thermal_get_ntrips
 80465000 T thermal_zone_of_sensor_register
 80465210 t of_thermal_set_mode
@@ -20431,7 +20431,7 @@
 804a4284 t __of_match_node
 804a4308 T of_match_node
 804a435c T __of_add_property_sysfs
-804a4450 T __of_attach_node_sysfs
+804.4.50-Re4son T __of_attach_node_sysfs
 804a4548 T __of_find_all_nodes
 804a45b4 T of_find_all_nodes
 804a460c T of_find_node_by_name
@@ -21165,7 +21165,7 @@
 804c4900 t __skb_splice_bits
 804c4a6c T skb_splice_bits
 804c4b7c T sock_dequeue_err_skb
-804c4c50 T skb_partial_csum_set
+804.4.50-Re4son T skb_partial_csum_set
 804c4d04 T __skb_warn_lro_forwarding
 804c4d3c t skb_may_tx_timestamp.part.12
 804c4da4 T skb_complete_tx_timestamp
@@ -21955,7 +21955,7 @@
 804f4538 t softnet_seq_next
 804f4568 t softnet_seq_stop
 804f4580 t ptype_get_idx
-804f4650 t ptype_seq_start
+804.4.50-Re4son t ptype_seq_start
 804f4688 t ptype_seq_stop
 804f46a0 t dev_mc_net_exit
 804f46c8 t dev_mc_seq_open
