@@ -29,16 +29,23 @@ git fetch --all
 ##	FIRMWARE_COMMIT="`git rev-parse upstream/stable`"
 ##fi
 
-git checkout stable
-git merge $FIRMWARE_COMMIT --no-edit
-##git checkout $FIRMWARE_COMMIT
+##git checkout stable
+##git merge $FIRMWARE_COMMIT --no-edit
+git checkout $FIRMWARE_COMMIT
+git checkout -b scratch
 cp -f ../firmware-extra/* ./extra/
+mv ./modules/4.9.24+ ./modules/4.9.24-Re4son+
+mv ./modules/4.9.24-v7+ ./modules/4.9.24-Re4son-v7+
+
+read -n1 -r -p "========> Breakpoint #1: Press any key to continue..."
+
 git add extra --all
-git commit -m "Update extra" || echo "Extra not updated"
+git add modules --all
+git commit -m "Initialise Re4son" || echo "Not initialised"
 
 DATE="`git show -s --format=%ct $FIRMWARE_COMMIT`"
-DEBVER="`date -d @$DATE -u +Re4son.%Y%m%d-1`"
-RELEASE="`date -d @$DATE -u +Re4son.%Y%m%d`"
+DEBVER="`date -d @$DATE -u +2.%Y%m%d-1`"
+RELEASE="`date -d @$DATE -u +2.%Y%m%d`"
 
 ##KERNEL_COMMIT="`cat extra/git_hash`"
 
@@ -47,6 +54,8 @@ rm linux -rf
 mkdir linux -p
 ##wget -qO- https://github.com/raspberrypi/linux/archive/${KERNEL_COMMIT}.tar.gz | tar xz -C linux --strip-components=1
 wget -qO- https://github.com/Re4son/re4son-raspberrypi-linux/archive/${KERNEL_COMMIT}.tar.gz | tar xz -C linux --strip-components=1
+
+read -n1 -r -p "========> Breakpoint #2: Press any key to continue..."
 
 echo Updating files...
 echo "+" > linux/.scmversion
@@ -57,11 +66,16 @@ version="`cat extra/uname_string7 | cut -d ' ' -f 3`"
 cp extra/Module7.symvers linux/Module.symvers
 copy_files
 
+read -n1 -r -p "========> Breakpoint #3: Press any key to continue..."
+
+
 version="`cat extra/uname_string | cut -d ' ' -f 3`"
 (cd linux; make distclean re4son_pi1_defconfig modules_prepare)
 cp extra/Module.symvers linux/Module.symvers
 copy_files
 (cd linux; make distclean)
+
+read -n1 -r -p "========> Breakpoint #4: Press any key to continue..."
 
 find headers -name .gitignore -delete
 git add headers --all
@@ -69,13 +83,23 @@ git commit -m "Update headers" || echo "Headers not updated"
 git tag ${RELEASE}-headers
 rm -rf linux
 
+read -n1 -r -p "========> Breakpoint #5: Press any key to continue..."
+
 git checkout debian-re4son
-git merge stable --no-edit -Xtheirs
+git merge scratch --no-edit -Xtheirs
+
+read -n1 -r -p "========> Breakpoint #6: Press any key to continue..."
 
 (cd debian; ./gen_bootloader_postinst_preinst.sh)
+
+read -n1 -r -p "========> Breakpoint #7: Press any key to continue..."
+
 dch -v $DEBVER -D jessie --force-distribution "firmware as of ${FIRMWARE_COMMIT}"
 git commit -a -m "$RELEASE release"
 git tag $RELEASE $FIRMWARE_COMMIT
 
+read -n1 -r -p "========> Breakpoint #7: Press any key to continue..."
+
 gbp buildpackage -us -uc -sa -S
 git clean -xdf
+git branch -D scratch
