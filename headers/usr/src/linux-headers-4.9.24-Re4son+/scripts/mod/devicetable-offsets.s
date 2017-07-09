@@ -33,10 +33,10 @@
 @ -Wno-pointer-sign -Werror=implicit-int -Werror=strict-prototypes
 @ -Werror=date-time -std=gnu90 -p -fno-strict-aliasing -fno-common -fno-PIE
 @ -fno-dwarf2-cfi-asm -fno-ipa-sra -funwind-tables
-@ -fno-delete-null-pointer-checks -fno-stack-protector
-@ -fno-omit-frame-pointer -fno-optimize-sibling-calls
-@ -fno-var-tracking-assignments -fno-strict-overflow -fconserve-stack
-@ -fverbose-asm --param allow-store-data-races=0
+@ -fno-delete-null-pointer-checks -fstack-protector -fno-omit-frame-pointer
+@ -fno-optimize-sibling-calls -fno-var-tracking-assignments
+@ -fno-strict-overflow -fconserve-stack -fverbose-asm
+@ --param allow-store-data-races=0
 @ options enabled:  -faggressive-loop-optimizations -fauto-inc-dec
 @ -fbranch-count-reg -fcaller-saves -fcombine-stack-adjustments
 @ -fcompare-elim -fcprop-registers -fcrossjumping -fcse-follow-jumps
@@ -58,19 +58,19 @@
 @ -fsched-pressure -fsched-rank-heuristic -fsched-spec
 @ -fsched-spec-insn-heuristic -fsched-stalled-insns-dep -fschedule-insns
 @ -fschedule-insns2 -fsection-anchors -fshow-column -fsigned-zeros
-@ -fsplit-ivs-in-unroller -fsplit-wide-types -fstrict-volatile-bitfields
-@ -fsync-libcalls -fthread-jumps -ftoplevel-reorder -ftrapping-math
-@ -ftree-bit-ccp -ftree-builtin-call-dce -ftree-ccp -ftree-ch
-@ -ftree-coalesce-vars -ftree-copy-prop -ftree-copyrename -ftree-cselim
-@ -ftree-dce -ftree-dominator-opts -ftree-dse -ftree-forwprop -ftree-fre
-@ -ftree-loop-if-convert -ftree-loop-im -ftree-loop-ivcanon
-@ -ftree-loop-optimize -ftree-parallelize-loops= -ftree-phiprop -ftree-pre
-@ -ftree-pta -ftree-reassoc -ftree-scev-cprop -ftree-sink -ftree-slsr
-@ -ftree-sra -ftree-switch-conversion -ftree-tail-merge -ftree-ter
-@ -ftree-vrp -funit-at-a-time -funwind-tables -fverbose-asm
-@ -fzero-initialized-in-bss -mapcs-frame -marm -mglibc -mlittle-endian
-@ -mlra -mpic-data-is-text-relative -munaligned-access
-@ -mvectorize-with-neon-quad
+@ -fsplit-ivs-in-unroller -fsplit-wide-types -fstack-protector
+@ -fstrict-volatile-bitfields -fsync-libcalls -fthread-jumps
+@ -ftoplevel-reorder -ftrapping-math -ftree-bit-ccp -ftree-builtin-call-dce
+@ -ftree-ccp -ftree-ch -ftree-coalesce-vars -ftree-copy-prop
+@ -ftree-copyrename -ftree-cselim -ftree-dce -ftree-dominator-opts
+@ -ftree-dse -ftree-forwprop -ftree-fre -ftree-loop-if-convert
+@ -ftree-loop-im -ftree-loop-ivcanon -ftree-loop-optimize
+@ -ftree-parallelize-loops= -ftree-phiprop -ftree-pre -ftree-pta
+@ -ftree-reassoc -ftree-scev-cprop -ftree-sink -ftree-slsr -ftree-sra
+@ -ftree-switch-conversion -ftree-tail-merge -ftree-ter -ftree-vrp
+@ -funit-at-a-time -funwind-tables -fverbose-asm -fzero-initialized-in-bss
+@ -mapcs-frame -marm -mglibc -mlittle-endian -mlra
+@ -mpic-data-is-text-relative -munaligned-access -mvectorize-with-neon-quad
 
 	.section	.text.startup,"ax",%progbits
 	.align	2
