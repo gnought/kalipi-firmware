@@ -129,13 +129,13 @@ if [ -f /etc/default/raspberrypi-kernel ]; then
   export RPI_INITRD
 fi
 if [ -d "/etc/kernel/preinst.d" ]; then
-  run-parts -v --report --exit-on-error --arg=4.9.24+ --arg=/boot/kernel.img /etc/kernel/preinst.d
-  run-parts -v --report --exit-on-error --arg=4.9.24-v7+ --arg=/boot/kernel7.img /etc/kernel/preinst.d
+  run-parts -v --report --exit-on-error --arg=4.9.24-Re4son+ --arg=/boot/kernel.img /etc/kernel/preinst.d
+  run-parts -v --report --exit-on-error --arg=4.9.24-Re4son-v7+ --arg=/boot/kernel7.img /etc/kernel/preinst.d
 fi
-if [ -d "/etc/kernel/preinst.d/4.9.24+" ]; then
-  run-parts -v --report --exit-on-error --arg=4.9.24+ --arg=/boot/kernel.img /etc/kernel/preinst.d/4.9.24+
+if [ -d "/etc/kernel/preinst.d/4.9.24-Re4son+" ]; then
+  run-parts -v --report --exit-on-error --arg=4.9.24-Re4son+ --arg=/boot/kernel.img /etc/kernel/preinst.d/4.9.24-Re4son+
 fi
-if [ -d "/etc/kernel/preinst.d/4.9.24-v7+" ]; then
-  run-parts -v --report --exit-on-error --arg=4.9.24-v7+ --arg=/boot/kernel7.img /etc/kernel/preinst.d/4.9.24-v7+
+if [ -d "/etc/kernel/preinst.d/4.9.24-Re4son-v7+" ]; then
+  run-parts -v --report --exit-on-error --arg=4.9.24-Re4son-v7+ --arg=/boot/kernel7.img /etc/kernel/preinst.d/4.9.24-Re4son-v7+
 fi
 #DEBHELPER#

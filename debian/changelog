@@ -1,3 +1,9 @@
+raspberrypi-firmware (2.20170427-1) jessie; urgency=medium
+
+  * firmware as of cb0b0ad6d11ddd251327303a97ba26a43e6b5b4b
+
+ -- Re4son <re4son@whitedome.com.au>  Sun, 09 Jul 2017 21:13:59 +1000
+
 raspberrypi-firmware (1.20170427-1) jessie; urgency=medium
 
   * firmware as of cb0b0ad6d11ddd251327303a97ba26a43e6b5b4b
