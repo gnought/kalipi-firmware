@@ -648,13 +648,13 @@ if [ -f /etc/default/raspberrypi-kernel ]; then
 
 fi
 if [ -d "/etc/kernel/postinst.d" ]; then
-  run-parts -v --report --exit-on-error --arg=4.9.41+ --arg=/boot/kernel.img /etc/kernel/postinst.d
-  run-parts -v --report --exit-on-error --arg=4.9.41-v7+ --arg=/boot/kernel7.img /etc/kernel/postinst.d
+  run-parts -v --report --exit-on-error --arg=4.9.41-Re4son+ --arg=/boot/kernel.img /etc/kernel/postinst.d
+  run-parts -v --report --exit-on-error --arg=4.9.41-Re4son-v7+ --arg=/boot/kernel7.img /etc/kernel/postinst.d
 fi
-if [ -d "/etc/kernel/postinst.d/4.9.41+" ]; then
-  run-parts -v --report --exit-on-error --arg=4.9.41+ --arg=/boot/kernel.img /etc/kernel/postinst.d/4.9.41+
+if [ -d "/etc/kernel/postinst.d/4.9.41-Re4son+" ]; then
+  run-parts -v --report --exit-on-error --arg=4.9.41-Re4son+ --arg=/boot/kernel.img /etc/kernel/postinst.d/4.9.41-Re4son+
 fi
-if [ -d "/etc/kernel/postinst.d/4.9.41-v7+" ]; then
-  run-parts -v --report --exit-on-error --arg=4.9.41-v7+ --arg=/boot/kernel7.img /etc/kernel/postinst.d/4.9.41-v7+
+if [ -d "/etc/kernel/postinst.d/4.9.41-Re4son-v7+" ]; then
+  run-parts -v --report --exit-on-error --arg=4.9.41-Re4son-v7+ --arg=/boot/kernel7.img /etc/kernel/postinst.d/4.9.41-Re4son-v7+
 fi
 #DEBHELPER#
