@@ -6,7 +6,7 @@ raspberrypi-firmware (1.20171029-1) stretch; urgency=medium
 
 raspberrypi-firmware (1.20170811-2) stretch; urgency=medium
 
-  * 
+  * Include .pc files
 
  -- Serge Schneider <serge@raspberrypi.org>  Thu, 24 Aug 2017 11:34:37 +0100
 
