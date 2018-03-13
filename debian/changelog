@@ -1,3 +1,17 @@
+raspberrypi-firmware (1.20180328-1) stretch; urgency=medium
+
+  * firmware as of ce8652e2c743f02f04cb29f23611cbf13765483b
+
+ -- Serge Schneider <serge@raspberrypi.org>  Wed, 28 Mar 2018 13:05:51 +0100
+
+raspberrypi-firmware (1.20180313-1) stretch; urgency=medium
+
+  * firmware as of 3347884c7df574bbabeff6dca63caf686e629699
+  * Kernel 4.9.80
+    - Breaks utilities which use firmware commit to determine kernel commit
+
+ -- Serge Schneider <serge@raspberrypi.org>  Tue, 13 Mar 2018 21:05:21 +0000
+
 raspberrypi-firmware (1.20171029-1) stretch; urgency=medium
 
   * firmware as of 93aae1391121c44c7bbddf66abaf38725ffa2dc0
