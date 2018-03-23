@@ -1,5 +1,5 @@
 
-urce: raspberrypi-firmware
+Source: raspberrypi-firmware
 Priority: extra
 Maintainer: Re4son <re4son@whitedome.com.au>
 Build-Depends: debhelper (>= 8.0.0), quilt
