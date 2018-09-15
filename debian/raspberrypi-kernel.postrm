@@ -8,13 +8,13 @@ if [ -f /etc/default/raspberrypi-kernel ]; then
 
 fi
 if [ -d "/etc/kernel/postrm.d" ]; then
-  run-parts -v --report --exit-on-error --arg=4.14.62+ --arg=/boot/kernel.img /etc/kernel/postrm.d
-  run-parts -v --report --exit-on-error --arg=4.14.62-v7+ --arg=/boot/kernel7.img /etc/kernel/postrm.d
+  run-parts -v --report --exit-on-error --arg=4.14.62-Re4son+ --arg=/boot/kernel.img /etc/kernel/postrm.d
+  run-parts -v --report --exit-on-error --arg=4.14.62-Re4son-v7+ --arg=/boot/kernel7.img /etc/kernel/postrm.d
 fi
-if [ -d "/etc/kernel/postrm.d/4.14.62+" ]; then
-  run-parts -v --report --exit-on-error --arg=4.14.62+ --arg=/boot/kernel.img /etc/kernel/postrm.d/4.14.62+
+if [ -d "/etc/kernel/postrm.d/4.14.62-Re4son+" ]; then
+  run-parts -v --report --exit-on-error --arg=4.14.62-Re4son+ --arg=/boot/kernel.img /etc/kernel/postrm.d/4.14.62-Re4son+
 fi
-if [ -d "/etc/kernel/postrm.d/4.14.62-v7+" ]; then
-  run-parts -v --report --exit-on-error --arg=4.14.62-v7+ --arg=/boot/kernel7.img /etc/kernel/postrm.d/4.14.62-v7+
+if [ -d "/etc/kernel/postrm.d/4.14.62-Re4son-v7+" ]; then
+  run-parts -v --report --exit-on-error --arg=4.14.62-Re4son-v7+ --arg=/boot/kernel7.img /etc/kernel/postrm.d/4.14.62-Re4son-v7+
 fi
 #DEBHELPER#
