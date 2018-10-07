@@ -1,0 +1,7 @@
+#!/bin/sh
+dpkg-divert --package raspberrypi-re4son-firmware --divert /lib/firmware/brcm/brcmfmac43430-sdio.bin.kali --rename /lib/firmware/brcm/brcmfmac43430-sdio.bin
+dpkg-divert --package raspberrypi-re4son-firmware --divert /lib/firmware/brcm/brcmfmac43430-sdio.txt.kali --rename /lib/firmware/brcm/brcmfmac43430-sdio.txt
+dpkg-divert --package raspberrypi-re4son-firmware --divert /lib/firmware/brcmc/brcmfmac43455-sdio.bin.kali --rename /lib/firmware/brcm/brcmfmac43455-sdio.bin
+dpkg-divert --package raspberrypi-re4son-firmware --divert /lib/firmware/brcmc/brcmfmac43455-sdio.clm_blob.kali --rename /lib/firmware/brcm/brcmfmac43455-sdio.clm_blob
+dpkg-divert --package raspberrypi-re4son-firmware --divert /lib/firmware/brcmc/brcmfmac43455-sdio.txt.kali --rename /lib/firmware/brcm/brcmfmac43455-sdio.txt
+#DEBHELPER#

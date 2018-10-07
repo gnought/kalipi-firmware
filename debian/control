@@ -8,6 +8,14 @@ Homepage: https://re4son-kernel.com/re4son-pi-kernel/
 Vcs-Git: git@github.com:Re4son/RPi-Distro-firmware.git
 Vcs-Browser: https://github.com/Re4son/RPi-Distro-firmware
 
+Package: raspberrypi-re4son-firmware
+Section: kernel
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: Additional Raspberry Pi firmware    
+ This package contains  firmware that may not be included in the standard 
+ OS image, such as nexmon firmware for the broadcom wifi chips.
+
 Package: libraspberrypi0
 Section: libs
 Architecture: armel armhf
