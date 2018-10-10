@@ -1,3 +1,9 @@
+raspberrypi-firmware (1.20180910-1+re4son1) kali; urgency=medium
+
+  * Repackaged for Kali
+
+ -- Serge Schneider <serge@raspberrypi.org>  Wed, 10 Oct 2018 17:45:33 +1100
+
 raspberrypi-firmware (1.20180910-1) stretch; urgency=medium
 
   * firmware as of cf9544f7f19bc9c8e8f75b63cbf051f411bbe15f
