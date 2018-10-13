@@ -1,12 +1,20 @@
 Source: raspberrypi-firmware
 Priority: extra
-Maintainer: Serge Schneider <serge@raspberrypi.org>
+Maintainer: Re4son <re4son@re4son-kernel>
 Build-Depends: debhelper (>= 8.0.0), quilt
 Standards-Version: 3.9.8
 Section: libs
-Homepage: https://github.com/raspberrypi/firmware
-Vcs-Git: git@github.com:RPi-Distro/firmware.git
-Vcs-Browser: https://github.com/RPi-Distro/firmware
+Homepage: https://re4son-kernel.com/re4son-pi-kernel/
+Vcs-Git: git@github.com:Re4son/RPi-Distro-firmware.git
+Vcs-Browser: https://github.com/Re4son/RPi-Distro-firmware
+
+Package: raspberrypi-re4son-firmware
+Section: kernel
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: Additional Raspberry Pi firmware
+ This package contains  firmware that may not be included in the standard
+ OS image, such as nexmon firmware for the broadcom wifi chips.
 
 Package: libraspberrypi0
 Section: libs

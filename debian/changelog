@@ -1,3 +1,9 @@
+raspberrypi-firmware (1.20180924-1+re4son1) kali; urgency=medium
+
+  * Repackaged for Kali
+
+ -- Re4son <re4son@re4son-kernel.com>  Sat, 13 Oct 2018 11:31:49 +1100
+
 raspberrypi-firmware (1.20180924-1) stretch; urgency=medium
 
   * firmware as of 5b49caa17e91d0e64024380119ad739bb201c674
