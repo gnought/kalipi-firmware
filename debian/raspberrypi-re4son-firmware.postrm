@@ -1,5 +1,4 @@
 #!/bin/sh
-#!/bin/sh
 # postrm script for raspberrypi-re4son-firmware
 #
 # see: dh_installdeb(1)
