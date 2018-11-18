@@ -1,72 +1,41 @@
 #!/bin/bash -e
+if ! [ -f ./debian/update.sh ]; then
+  printf "Cannot find working directory. Run from from root directory:\n./debian/update.sh\n"
+  exit 1
+fi
 
-copy_files (){
-destdir=headers/usr/src/linux-headers-$version
-mkdir -p "$destdir"
-mkdir -p headers/lib/modules/$version
-rsync -aHAX \
-	--files-from=<(cd linux; find -name Makefile\* -o -name Kconfig\* -o -name \*.pl) linux/ $destdir/
-rsync -aHAX \
-	--files-from=<(cd linux; find arch/arm/include include scripts -type f) linux/ $destdir/
-rsync -aHAX \
-	--files-from=<(cd linux; find arch/arm -name module.lds -o -name Kbuild.platforms -o -name Platform) linux/ $destdir/
-rsync -aHAX \
-	--files-from=<(cd linux; find `find arch/arm -name include -o -name scripts -type d` -type f) linux/ $destdir/
-rsync -aHAX \
-	--files-from=<(cd linux; find arch/arm/include Module.symvers .config include scripts -type f) linux/ $destdir/
-ln -sf "/usr/src/linux-headers-$version" "headers/lib/modules/$version/build"
-
-}
+UPSTREAM_BRANCH="master"
+##UPSTREAM_BRANCH="stable"
 
 git fetch --all
 if [ -n "$1" ]; then
 	FIRMWARE_COMMIT="$1"
 else
-	FIRMWARE_COMMIT="`git rev-parse upstream/stable`"
+	FIRMWARE_COMMIT="`git rev-parse upstream/$UPSTREAM_BRANCH`"
 fi
 
-git checkout stable
+git checkout $UPSTREAM_BRANCH
 git merge $FIRMWARE_COMMIT --no-edit
+git checkout debian
+git merge $UPSTREAM_BRANCH --no-edit -Xtheirs
 
 DATE="`git show -s --format=%ct $FIRMWARE_COMMIT`"
-DEBVER="`date -d @$DATE -u +1.%Y%m%d-1`"
-RELEASE="`date -d @$DATE -u +1.%Y%m%d`"
+DEBVER="`date -d @$DATE -u +%Y%m%dkali-1`"
+RELEASE="`date -d @$DATE -u +%Y%m%dkali`"
 
 KERNEL_COMMIT="`cat extra/git_hash`"
 
-echo "Downloading linux (${KERNEL_COMMIT})..."
-rm linux -rf
-mkdir linux -p
-wget -qO- https://github.com/raspberrypi/linux/archive/${KERNEL_COMMIT}.tar.gz | tar xz -C linux --strip-components=1
 
-echo Updating files...
-echo "+" > linux/.scmversion
-rm -rf headers
+echo Cleaning up Raspberrypi firmware ...
+rm -rf headers modules
+rm -f extra/*symvers extra/*.map boot/*.img
 
-version="`cat extra/uname_string7 | cut -d ' ' -f 3`"
-(cd linux; make distclean bcm2709_defconfig modules_prepare)
-cp extra/Module7.symvers linux/Module.symvers
-copy_files
-
-version="`cat extra/uname_string | cut -d ' ' -f 3`"
-(cd linux; make distclean bcmrpi_defconfig modules_prepare)
-cp extra/Module.symvers linux/Module.symvers
-copy_files
-(cd linux; make distclean)
-
-find headers -name .gitignore -delete
-git add headers --all
-git commit -m "Update headers" || echo "Headers not updated"
-git tag ${RELEASE}-headers
-rm -rf linux
-
-git checkout debian
-git merge stable --no-edit -Xtheirs
+version=`cat extra/uname_string | cut -f 3 -d ' ' | tr -d +`-Re4son
+version6="$version+"
+version7="$version-v7+"
+version8="$version-v8+"
 
 (cd debian; ./gen_bootloader_postinst_preinst.sh)
-dch -v $DEBVER -D stretch --force-distribution "firmware as of ${FIRMWARE_COMMIT}"
+dch -v $DEBVER -D kali-rolling --force-distribution "firmware as of ${FIRMWARE_COMMIT}"
 git commit -a -m "$RELEASE release"
 git tag $RELEASE $FIRMWARE_COMMIT
-
-gbp buildpackage -us -uc -sa
-git clean -xdf
