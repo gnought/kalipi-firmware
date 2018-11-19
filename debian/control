@@ -65,8 +65,8 @@ Package: kalipi-kernel
 Section: kernel
 Architecture: armel armhf arm64
 Depends: ${misc:Depends}
-Breaks: raspberrypi-bootloader
-Replaces: raspberrypi-bootloader
+Breaks: raspberrypi-kernel
+Replaces: raspberrypi-kernel
 Provides: linux-image
 Description: Kali-Pi bootloader
  This package contains the Kali-Pi Linux kernel.
