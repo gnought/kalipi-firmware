@@ -1,10 +1,10 @@
-raspberrypi-firmware (20181112kali-1) kali-rolling; urgency=medium
+kalipi-firmware (20181112kali-1) kali-rolling; urgency=medium
 
   * firmware as of 86e3ccc14e43618f82a13e639002199de29a16b1
 
  -- Re4son <re4son@re4son-kernel.com>  Sun, 18 Nov 2018 13:26:21 +1100
 
-raspberrypi-firmware (20180924kali-1) kali-rolling; urgency=medium
+kalipi-firmware (20180924kali-1) kali-rolling; urgency=medium
 
   * Repackaged for Kali
 
