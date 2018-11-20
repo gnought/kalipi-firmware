@@ -12,6 +12,8 @@ Package: kalipi-re4son-firmware
 Section: kernel
 Architecture: armel armhf arm64
 Depends: ${shlibs:Depends}, ${misc:Depends}
+Breaks: raspberrypi-re4son-firmware
+Replaces: raspberrypi-re4son-firmware
 Description: Additional Kali-Pi Pi firmware
  This package contains  firmware that may not be included in the standard
  OS image, such as nexmon firmware for the broadcom wifi chips.
