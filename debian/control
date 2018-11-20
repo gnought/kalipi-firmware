@@ -19,7 +19,7 @@ Description: Additional Kali-Pi Pi firmware
 Package: libraspberrypi0
 Section: libs
 Architecture: armel armhf
-Depends: raspberrypi-bootloader (= ${binary:Version}), ${shlibs:Depends}, ${misc:Depends}
+Depends: kalipi-bootloader (= ${binary:Version}), ${shlibs:Depends}, ${misc:Depends}
 Description: EGL/GLES/OpenVG/etc. libraries for the Raspberry Pi's VideoCore IV
  This package contains implementations of EGL, OpenGL ES, OpenVG, OpenWF
  Composition, and others for the Raspberry Pi's VideoCore IV multimedia
