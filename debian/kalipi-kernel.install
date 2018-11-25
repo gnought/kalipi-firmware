@@ -3,4 +3,4 @@ boot/*.dtb
 boot/kernel*.img
 boot/COPYING.linux
 modules /lib/
-etc/default/raspberrypi-kernel
+etc/default/kalipi-kernel
