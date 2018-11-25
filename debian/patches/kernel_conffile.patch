@@ -1,7 +1,7 @@
 --- /dev/null
-+++ b/etc/default/raspberrypi-kernel
++++ b/etc/default/kalipi-kernel
 @@ -0,0 +1,11 @@
-+# Defaults for raspberrypi-kernel
++# Defaults for kalipi-kernel
 +
 +# Uncomment the following line to enable generation of
 +# /boot/initrd.img-KVER files (requires initramfs-tools)
