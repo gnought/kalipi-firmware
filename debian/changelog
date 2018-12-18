@@ -1,3 +1,9 @@
+kalipi-firmware (20181218kali-1) kali-rolling; urgency=medium
+
+  * firmware as of 1ea87818b323d08e7bc8e74f930952f36f2f61f4
+
+ -- Re4son <re4son@re4son-kernel.com>  Tue, 18 Dec 2018 11:50:24 +1100
+
 kalipi-firmware (20181112kali-1) kali-rolling; urgency=medium
 
   * firmware as of 86e3ccc14e43618f82a13e639002199de29a16b1

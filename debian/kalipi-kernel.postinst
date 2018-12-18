@@ -49,6 +49,11 @@ if [ -f /usr/share/rpikernelhack/COPYING.linux ]; then
 	dpkg-divert --package rpikernelhack --remove --rename /boot/COPYING.linux
 	sync
 fi
+if [ -f /usr/share/rpikernelhack/overlays/3dlab-nano-player.dtbo ]; then
+	rm -f /boot/overlays/3dlab-nano-player.dtbo
+	dpkg-divert --package rpikernelhack --remove --rename /boot/overlays/3dlab-nano-player.dtbo
+	sync
+fi
 if [ -f /usr/share/rpikernelhack/overlays/README ]; then
 	rm -f /boot/overlays/README
 	dpkg-divert --package rpikernelhack --remove --rename /boot/overlays/README
@@ -739,6 +744,11 @@ if [ -f /usr/share/rpikernelhack/overlays/tinylcd35.dtbo ]; then
 	dpkg-divert --package rpikernelhack --remove --rename /boot/overlays/tinylcd35.dtbo
 	sync
 fi
+if [ -f /usr/share/rpikernelhack/overlays/tpm-slb9670.dtbo ]; then
+	rm -f /boot/overlays/tpm-slb9670.dtbo
+	dpkg-divert --package rpikernelhack --remove --rename /boot/overlays/tpm-slb9670.dtbo
+	sync
+fi
 if [ -f /usr/share/rpikernelhack/overlays/uart0.dtbo ]; then
 	rm -f /boot/overlays/uart0.dtbo
 	dpkg-divert --package rpikernelhack --remove --rename /boot/overlays/uart0.dtbo
@@ -803,17 +813,17 @@ if [ -f /etc/default/kalipi-kernel ]; then
 
 fi
 if [ -d "/etc/kernel/postinst.d" ]; then
-  run-parts -v --report --exit-on-error --arg=4.14.80-Re4son+ --arg=/boot/kernel.img /etc/kernel/postinst.d
-  run-parts -v --report --exit-on-error --arg=4.14.80-Re4son-v7+ --arg=/boot/kernel7.img /etc/kernel/postinst.d
-  run-parts -v --report --exit-on-error --arg=4.14.80-Re4son-v8+ --arg=/boot/kernel8.img /etc/kernel/postinst.d
+  run-parts -v --report --exit-on-error --arg=4.14.89-Re4son+ --arg=/boot/kernel.img /etc/kernel/postinst.d
+  run-parts -v --report --exit-on-error --arg=4.14.89-Re4son-v7+ --arg=/boot/kernel7.img /etc/kernel/postinst.d
+  run-parts -v --report --exit-on-error --arg=4.14.89-Re4son-v8+ --arg=/boot/kernel8.img /etc/kernel/postinst.d
 fi
-if [ -d "/etc/kernel/postinst.d/4.14.80-Re4son+" ]; then
-  run-parts -v --report --exit-on-error --arg=4.14.80-Re4son+ --arg=/boot/kernel.img /etc/kernel/postinst.d/4.14.80-Re4son+
+if [ -d "/etc/kernel/postinst.d/4.14.89-Re4son+" ]; then
+  run-parts -v --report --exit-on-error --arg=4.14.89-Re4son+ --arg=/boot/kernel.img /etc/kernel/postinst.d/4.14.89-Re4son+
 fi
-if [ -d "/etc/kernel/postinst.d/4.14.80-Re4son-v7+" ]; then
-  run-parts -v --report --exit-on-error --arg=4.14.80-Re4son-v7+ --arg=/boot/kernel7.img /etc/kernel/postinst.d/4.14.80-Re4son-v7+
+if [ -d "/etc/kernel/postinst.d/4.14.89-Re4son-v7+" ]; then
+  run-parts -v --report --exit-on-error --arg=4.14.89-Re4son-v7+ --arg=/boot/kernel7.img /etc/kernel/postinst.d/4.14.89-Re4son-v7+
 fi
-if [ -d "/etc/kernel/postinst.d/4.14.80-Re4son-v8+" ]; then
-  run-parts -v --report --exit-on-error --arg=4.14.80-Re4son-v8+ --arg=/boot/kernel8.img /etc/kernel/postinst.d/4.14.80-Re4son-v8+
+if [ -d "/etc/kernel/postinst.d/4.14.89-Re4son-v8+" ]; then
+  run-parts -v --report --exit-on-error --arg=4.14.89-Re4son-v8+ --arg=/boot/kernel8.img /etc/kernel/postinst.d/4.14.89-Re4son-v8+
 fi
 #DEBHELPER#

@@ -11,6 +11,7 @@ dpkg-divert --package rpikernelhack --divert /usr/share/rpikernelhack/bcm2710-rp
 dpkg-divert --package rpikernelhack --divert /usr/share/rpikernelhack/bcm2710-rpi-cm3.dtb /boot/bcm2710-rpi-cm3.dtb
 dpkg-divert --package rpikernelhack --divert /usr/share/rpikernelhack/kernel*.img /boot/kernel*.img
 dpkg-divert --package rpikernelhack --divert /usr/share/rpikernelhack/COPYING.linux /boot/COPYING.linux
+dpkg-divert --package rpikernelhack --divert /usr/share/rpikernelhack/overlays/3dlab-nano-player.dtbo /boot/overlays/3dlab-nano-player.dtbo
 dpkg-divert --package rpikernelhack --divert /usr/share/rpikernelhack/overlays/README /boot/overlays/README
 dpkg-divert --package rpikernelhack --divert /usr/share/rpikernelhack/overlays/adau1977-adc.dtbo /boot/overlays/adau1977-adc.dtbo
 dpkg-divert --package rpikernelhack --divert /usr/share/rpikernelhack/overlays/adau7002-simple.dtbo /boot/overlays/adau7002-simple.dtbo
@@ -149,6 +150,7 @@ dpkg-divert --package rpikernelhack --divert /usr/share/rpikernelhack/overlays/s
 dpkg-divert --package rpikernelhack --divert /usr/share/rpikernelhack/overlays/tc358743-audio.dtbo /boot/overlays/tc358743-audio.dtbo
 dpkg-divert --package rpikernelhack --divert /usr/share/rpikernelhack/overlays/tc358743.dtbo /boot/overlays/tc358743.dtbo
 dpkg-divert --package rpikernelhack --divert /usr/share/rpikernelhack/overlays/tinylcd35.dtbo /boot/overlays/tinylcd35.dtbo
+dpkg-divert --package rpikernelhack --divert /usr/share/rpikernelhack/overlays/tpm-slb9670.dtbo /boot/overlays/tpm-slb9670.dtbo
 dpkg-divert --package rpikernelhack --divert /usr/share/rpikernelhack/overlays/uart0.dtbo /boot/overlays/uart0.dtbo
 dpkg-divert --package rpikernelhack --divert /usr/share/rpikernelhack/overlays/uart1.dtbo /boot/overlays/uart1.dtbo
 dpkg-divert --package rpikernelhack --divert /usr/share/rpikernelhack/overlays/upstream-aux-interrupt.dtbo /boot/overlays/upstream-aux-interrupt.dtbo
@@ -168,17 +170,17 @@ if [ -f /etc/default/kalipi-kernel ]; then
   export RPI_INITRD
 fi
 if [ -d "/etc/kernel/preinst.d" ]; then
-  run-parts -v --report --exit-on-error --arg=4.14.80-Re4son+ --arg=/boot/kernel.img /etc/kernel/preinst.d
-  run-parts -v --report --exit-on-error --arg=4.14.80-Re4son-v7+ --arg=/boot/kernel7.img /etc/kernel/preinst.d
-  run-parts -v --report --exit-on-error --arg=4.14.80-Re4son-v8+ --arg=/boot/kernel8.img /etc/kernel/preinst.d
+  run-parts -v --report --exit-on-error --arg=4.14.89-Re4son+ --arg=/boot/kernel.img /etc/kernel/preinst.d
+  run-parts -v --report --exit-on-error --arg=4.14.89-Re4son-v7+ --arg=/boot/kernel7.img /etc/kernel/preinst.d
+  run-parts -v --report --exit-on-error --arg=4.14.89-Re4son-v8+ --arg=/boot/kernel8.img /etc/kernel/preinst.d
 fi
-if [ -d "/etc/kernel/preinst.d/4.14.80-Re4son+" ]; then
-  run-parts -v --report --exit-on-error --arg=4.14.80-Re4son+ --arg=/boot/kernel.img /etc/kernel/preinst.d/4.14.80-Re4son+
+if [ -d "/etc/kernel/preinst.d/4.14.89-Re4son+" ]; then
+  run-parts -v --report --exit-on-error --arg=4.14.89-Re4son+ --arg=/boot/kernel.img /etc/kernel/preinst.d/4.14.89-Re4son+
 fi
-if [ -d "/etc/kernel/preinst.d/4.14.80-Re4son-v7+" ]; then
-  run-parts -v --report --exit-on-error --arg=4.14.80-Re4son-v7+ --arg=/boot/kernel7.img /etc/kernel/preinst.d/4.14.80-Re4son-v7+
+if [ -d "/etc/kernel/preinst.d/4.14.89-Re4son-v7+" ]; then
+  run-parts -v --report --exit-on-error --arg=4.14.89-Re4son-v7+ --arg=/boot/kernel7.img /etc/kernel/preinst.d/4.14.89-Re4son-v7+
 fi
-if [ -d "/etc/kernel/preinst.d/4.14.80-Re4son-v8+" ]; then
-  run-parts -v --report --exit-on-error --arg=4.14.80-Re4son-v8+ --arg=/boot/kernel8.img /etc/kernel/preinst.d/4.14.80-Re4son-v8+
+if [ -d "/etc/kernel/preinst.d/4.14.89-Re4son-v8+" ]; then
+  run-parts -v --report --exit-on-error --arg=4.14.89-Re4son-v8+ --arg=/boot/kernel8.img /etc/kernel/preinst.d/4.14.89-Re4son-v8+
 fi
 #DEBHELPER#
