@@ -14,6 +14,8 @@ dpkg-divert --package rpikernelhack --divert /usr/share/rpikernelhack/kernel7.im
 dpkg-divert --package rpikernelhack --divert /usr/share/rpikernelhack/kernel8.img /boot/kernel8.img
 dpkg-divert --package rpikernelhack --divert /usr/share/rpikernelhack/kernel8-alt.img /boot/kernel8-alt.img
 dpkg-divert --package rpikernelhack --divert /usr/share/rpikernelhack/COPYING.linux /boot/COPYING.linux
+dpkg-divert --package rpikernelhack --divert /usr/share/rpikernelhack/overlays/35-hat.dtbo /boot/overlays/35-hat.dtbo
+dpkg-divert --package rpikernelhack --divert /usr/share/rpikernelhack/overlays/4dpi-32.dtbo /boot/overlays/4dpi-32.dtbo
 dpkg-divert --package rpikernelhack --divert /usr/share/rpikernelhack/overlays/3dlab-nano-player.dtbo /boot/overlays/3dlab-nano-player.dtbo
 dpkg-divert --package rpikernelhack --divert /usr/share/rpikernelhack/overlays/README /boot/overlays/README
 dpkg-divert --package rpikernelhack --divert /usr/share/rpikernelhack/overlays/adau1977-adc.dtbo /boot/overlays/adau1977-adc.dtbo
@@ -44,6 +46,8 @@ dpkg-divert --package rpikernelhack --divert /usr/share/rpikernelhack/overlays/d
 dpkg-divert --package rpikernelhack --divert /usr/share/rpikernelhack/overlays/dpi24.dtbo /boot/overlays/dpi24.dtbo
 dpkg-divert --package rpikernelhack --divert /usr/share/rpikernelhack/overlays/dwc-otg.dtbo /boot/overlays/dwc-otg.dtbo
 dpkg-divert --package rpikernelhack --divert /usr/share/rpikernelhack/overlays/dwc2.dtbo /boot/overlays/dwc2.dtbo
+dpkg-divert --package rpikernelhack --divert /usr/share/rpikernelhack/overlays/elecfreaks22-overlay.dtb /boot/overlays/elecfreaks22-overlay.dtb
+dpkg-divert --package rpikernelhack --divert /usr/share/rpikernelhack/overlays/elecfreaks22.dtbo /boot/overlays/elecfreaks22.dtbo
 dpkg-divert --package rpikernelhack --divert /usr/share/rpikernelhack/overlays/enc28j60-spi2.dtbo /boot/overlays/enc28j60-spi2.dtbo
 dpkg-divert --package rpikernelhack --divert /usr/share/rpikernelhack/overlays/enc28j60.dtbo /boot/overlays/enc28j60.dtbo
 dpkg-divert --package rpikernelhack --divert /usr/share/rpikernelhack/overlays/exc3000.dtbo /boot/overlays/exc3000.dtbo
@@ -80,6 +84,8 @@ dpkg-divert --package rpikernelhack --divert /usr/share/rpikernelhack/overlays/i
 dpkg-divert --package rpikernelhack --divert /usr/share/rpikernelhack/overlays/iqaudio-dac.dtbo /boot/overlays/iqaudio-dac.dtbo
 dpkg-divert --package rpikernelhack --divert /usr/share/rpikernelhack/overlays/iqaudio-dacplus.dtbo /boot/overlays/iqaudio-dacplus.dtbo
 dpkg-divert --package rpikernelhack --divert /usr/share/rpikernelhack/overlays/iqaudio-digi-wm8804-audio.dtbo /boot/overlays/iqaudio-digi-wm8804-audio.dtbo
+dpkg-divert --package rpikernelhack --divert /usr/share/rpikernelhack/overlays/jbtek-overlay.dtb /boot/overlays/jbtek-overlay.dtb
+dpkg-divert --package rpikernelhack --divert /usr/share/rpikernelhack/overlays/jbtek.dtbo /boot/overlays/jbtek.dtbo
 dpkg-divert --package rpikernelhack --divert /usr/share/rpikernelhack/overlays/jedec-spi-nor.dtbo /boot/overlays/jedec-spi-nor.dtbo
 dpkg-divert --package rpikernelhack --divert /usr/share/rpikernelhack/overlays/justboom-dac.dtbo /boot/overlays/justboom-dac.dtbo
 dpkg-divert --package rpikernelhack --divert /usr/share/rpikernelhack/overlays/justboom-digi.dtbo /boot/overlays/justboom-digi.dtbo
@@ -128,6 +134,8 @@ dpkg-divert --package rpikernelhack --divert /usr/share/rpikernelhack/overlays/r
 dpkg-divert --package rpikernelhack --divert /usr/share/rpikernelhack/overlays/rpi-sense.dtbo /boot/overlays/rpi-sense.dtbo
 dpkg-divert --package rpikernelhack --divert /usr/share/rpikernelhack/overlays/rpi-tv.dtbo /boot/overlays/rpi-tv.dtbo
 dpkg-divert --package rpikernelhack --divert /usr/share/rpikernelhack/overlays/rra-digidac1-wm8741-audio.dtbo /boot/overlays/rra-digidac1-wm8741-audio.dtbo
+dpkg-divert --package rpikernelhack --divert /usr/share/rpikernelhack/overlays/sainsmart32-overlay.dtb /boot/overlays/sainsmart32-overlay.dtb
+dpkg-divert --package rpikernelhack --divert /usr/share/rpikernelhack/overlays/sainsmart32.dtbo /boot/overlays/sainsmart32.dtbo
 dpkg-divert --package rpikernelhack --divert /usr/share/rpikernelhack/overlays/sc16is750-i2c.dtbo /boot/overlays/sc16is750-i2c.dtbo
 dpkg-divert --package rpikernelhack --divert /usr/share/rpikernelhack/overlays/sc16is752-i2c.dtbo /boot/overlays/sc16is752-i2c.dtbo
 dpkg-divert --package rpikernelhack --divert /usr/share/rpikernelhack/overlays/sc16is752-spi1.dtbo /boot/overlays/sc16is752-spi1.dtbo
@@ -162,6 +170,12 @@ dpkg-divert --package rpikernelhack --divert /usr/share/rpikernelhack/overlays/v
 dpkg-divert --package rpikernelhack --divert /usr/share/rpikernelhack/overlays/vc4-kms-kippah-7inch.dtbo /boot/overlays/vc4-kms-kippah-7inch.dtbo
 dpkg-divert --package rpikernelhack --divert /usr/share/rpikernelhack/overlays/vc4-kms-v3d.dtbo /boot/overlays/vc4-kms-v3d.dtbo
 dpkg-divert --package rpikernelhack --divert /usr/share/rpikernelhack/overlays/vga666.dtbo /boot/overlays/vga666.dtbo
+dpkg-divert --package rpikernelhack --divert /usr/share/rpikernelhack/overlays/waveshare35a-overlay.dtb /boot/overlays/waveshare35a-overlay.dtb
+dpkg-divert --package rpikernelhack --divert /usr/share/rpikernelhack/overlays/waveshare35a.dtbo /boot/overlays/waveshare35a.dtbo
+dpkg-divert --package rpikernelhack --divert /usr/share/rpikernelhack/overlays/waveshare35b-overlay.dtb /boot/overlays/waveshare35b-overlay.dtb
+dpkg-divert --package rpikernelhack --divert /usr/share/rpikernelhack/overlays/waveshare35b.dtbo /boot/overlays/waveshare35b.dtbo
+dpkg-divert --package rpikernelhack --divert /usr/share/rpikernelhack/overlays/waveshare32b-overlay.dtb /boot/overlays/waveshare32b-overlay.dtb
+dpkg-divert --package rpikernelhack --divert /usr/share/rpikernelhack/overlays/waveshare32b.dtbo /boot/overlays/waveshare32b.dtbo
 dpkg-divert --package rpikernelhack --divert /usr/share/rpikernelhack/overlays/w1-gpio-pullup.dtbo /boot/overlays/w1-gpio-pullup.dtbo
 dpkg-divert --package rpikernelhack --divert /usr/share/rpikernelhack/overlays/w1-gpio.dtbo /boot/overlays/w1-gpio.dtbo
 dpkg-divert --package rpikernelhack --divert /usr/share/rpikernelhack/overlays/wittypi.dtbo /boot/overlays/wittypi.dtbo
