@@ -37,7 +37,7 @@ fi
 if [ -d "/etc/kernel/preinst.d" ]; then
   run-parts -v --report --exit-on-error --arg=${version}+ --arg=/boot/kernel.img /etc/kernel/preinst.d
   run-parts -v --report --exit-on-error --arg=${version}-v7+ --arg=/boot/kernel7.img /etc/kernel/preinst.d
-  run-parts -v --report --exit-on-error --arg=${version}-v8+ --arg=/boot/kernel8.img /etc/kernel/preinst.d
+  run-parts -v --report --exit-on-error --arg=${version}-v8+ --arg=/boot/kernel8-alt.img /etc/kernel/preinst.d
 fi
 if [ -d "/etc/kernel/preinst.d/${version}+" ]; then
   run-parts -v --report --exit-on-error --arg=${version}+ --arg=/boot/kernel.img /etc/kernel/preinst.d/${version}+
@@ -46,7 +46,7 @@ if [ -d "/etc/kernel/preinst.d/${version}-v7+" ]; then
   run-parts -v --report --exit-on-error --arg=${version}-v7+ --arg=/boot/kernel7.img /etc/kernel/preinst.d/${version}-v7+
 fi
 if [ -d "/etc/kernel/preinst.d/${version}-v8+" ]; then
-  run-parts -v --report --exit-on-error --arg=${version}-v8+ --arg=/boot/kernel8.img /etc/kernel/preinst.d/${version}-v8+
+  run-parts -v --report --exit-on-error --arg=${version}-v8+ --arg=/boot/kernel8-alt.img /etc/kernel/preinst.d/${version}-v8+
 fi
 EOF
 
@@ -62,7 +62,7 @@ fi
 if [ -d "/etc/kernel/postinst.d" ]; then
   run-parts -v --report --exit-on-error --arg=${version}+ --arg=/boot/kernel.img /etc/kernel/postinst.d
   run-parts -v --report --exit-on-error --arg=${version}-v7+ --arg=/boot/kernel7.img /etc/kernel/postinst.d
-  run-parts -v --report --exit-on-error --arg=${version}-v8+ --arg=/boot/kernel8.img /etc/kernel/postinst.d
+  run-parts -v --report --exit-on-error --arg=${version}-v8+ --arg=/boot/kernel8-alt.img /etc/kernel/postinst.d
 fi
 if [ -d "/etc/kernel/postinst.d/${version}+" ]; then
   run-parts -v --report --exit-on-error --arg=${version}+ --arg=/boot/kernel.img /etc/kernel/postinst.d/${version}+
@@ -71,7 +71,7 @@ if [ -d "/etc/kernel/postinst.d/${version}-v7+" ]; then
   run-parts -v --report --exit-on-error --arg=${version}-v7+ --arg=/boot/kernel7.img /etc/kernel/postinst.d/${version}-v7+
 fi
 if [ -d "/etc/kernel/postinst.d/${version}-v8+" ]; then
-  run-parts -v --report --exit-on-error --arg=${version}-v8+ --arg=/boot/kernel8.img /etc/kernel/postinst.d/${version}-v8+
+  run-parts -v --report --exit-on-error --arg=${version}-v8+ --arg=/boot/kernel8-alt.img /etc/kernel/postinst.d/${version}-v8+
 fi
 EOF
 
@@ -142,7 +142,7 @@ fi
 if [ -d "/etc/kernel/prerm.d" ]; then
   run-parts -v --report --exit-on-error --arg=${version}+ --arg=/boot/kernel.img /etc/kernel/prerm.d
   run-parts -v --report --exit-on-error --arg=${version}-v7+ --arg=/boot/kernel7.img /etc/kernel/prerm.d
-  run-parts -v --report --exit-on-error --arg=${version}-v8+ --arg=/boot/kernel8.img /etc/kernel/prerm.d
+  run-parts -v --report --exit-on-error --arg=${version}-v8+ --arg=/boot/kernel8-alt.img /etc/kernel/prerm.d
 fi
 if [ -d "/etc/kernel/prerm.d/${version}+" ]; then
   run-parts -v --report --exit-on-error --arg=${version}+ --arg=/boot/kernel.img /etc/kernel/prerm.d/${version}+
@@ -151,7 +151,7 @@ if [ -d "/etc/kernel/prerm.d/${version}-v7+" ]; then
   run-parts -v --report --exit-on-error --arg=${version}-v7+ --arg=/boot/kernel7.img /etc/kernel/prerm.d/${version}-v7+
 fi
 if [ -d "/etc/kernel/prerm.d/${version}-v8+" ]; then
-  run-parts -v --report --exit-on-error --arg=${version}-v8+ --arg=/boot/kernel8.img /etc/kernel/prerm.d/${version}-v8+
+  run-parts -v --report --exit-on-error --arg=${version}-v8+ --arg=/boot/kernel8-alt.img /etc/kernel/prerm.d/${version}-v8+
 fi
 EOF
 
@@ -167,7 +167,7 @@ fi
 if [ -d "/etc/kernel/postrm.d" ]; then
   run-parts -v --report --exit-on-error --arg=${version}+ --arg=/boot/kernel.img /etc/kernel/postrm.d
   run-parts -v --report --exit-on-error --arg=${version}-v7+ --arg=/boot/kernel7.img /etc/kernel/postrm.d
-  run-parts -v --report --exit-on-error --arg=${version}-v8+ --arg=/boot/kernel8.img /etc/kernel/postrm.d
+  run-parts -v --report --exit-on-error --arg=${version}-v8+ --arg=/boot/kernel8-alt.img /etc/kernel/postrm.d
 fi
 if [ -d "/etc/kernel/postrm.d/${version}+" ]; then
   run-parts -v --report --exit-on-error --arg=${version}+ --arg=/boot/kernel.img /etc/kernel/postrm.d/${version}+
@@ -176,7 +176,7 @@ if [ -d "/etc/kernel/postrm.d/${version}-v7+" ]; then
   run-parts -v --report --exit-on-error --arg=${version}-v7+ --arg=/boot/kernel7.img /etc/kernel/postrm.d/${version}-v7+
 fi
 if [ -d "/etc/kernel/postrm.d/${version}-v8+" ]; then
-  run-parts -v --report --exit-on-error --arg=${version}-v8+ --arg=/boot/kernel8.img /etc/kernel/postrm.d/${version}-v8+
+  run-parts -v --report --exit-on-error --arg=${version}-v8+ --arg=/boot/kernel8-alt.img /etc/kernel/postrm.d/${version}-v8+
 fi
 EOF
 

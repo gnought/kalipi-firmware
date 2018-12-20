@@ -49,9 +49,9 @@ if [ -f /usr/share/rpikernelhack/kernel7.img ]; then
 	dpkg-divert --package rpikernelhack --remove --rename /boot/kernel7.img
 	sync
 fi
-if [ -f /usr/share/rpikernelhack/kernel8.img ]; then
-	rm -f /boot/kernel8.img
-	dpkg-divert --package rpikernelhack --remove --rename /boot/kernel8.img
+if [ -f /usr/share/rpikernelhack/kernel8-alt.img ]; then
+	rm -f /boot/kernel8-alt.img
+	dpkg-divert --package rpikernelhack --remove --rename /boot/kernel8-alt.img
 	sync
 fi
 if [ -f /usr/share/rpikernelhack/kernel8-alt.img ]; then
@@ -900,7 +900,7 @@ fi
 if [ -d "/etc/kernel/postinst.d" ]; then
   run-parts -v --report --exit-on-error --arg=4.14.89-Re4son+ --arg=/boot/kernel.img /etc/kernel/postinst.d
   run-parts -v --report --exit-on-error --arg=4.14.89-Re4son-v7+ --arg=/boot/kernel7.img /etc/kernel/postinst.d
-  run-parts -v --report --exit-on-error --arg=4.14.89-Re4son-v8+ --arg=/boot/kernel8.img /etc/kernel/postinst.d
+  run-parts -v --report --exit-on-error --arg=4.14.89-Re4son-v8+ --arg=/boot/kernel8-alt.img /etc/kernel/postinst.d
 fi
 if [ -d "/etc/kernel/postinst.d/4.14.89-Re4son+" ]; then
   run-parts -v --report --exit-on-error --arg=4.14.89-Re4son+ --arg=/boot/kernel.img /etc/kernel/postinst.d/4.14.89-Re4son+
@@ -909,6 +909,6 @@ if [ -d "/etc/kernel/postinst.d/4.14.89-Re4son-v7+" ]; then
   run-parts -v --report --exit-on-error --arg=4.14.89-Re4son-v7+ --arg=/boot/kernel7.img /etc/kernel/postinst.d/4.14.89-Re4son-v7+
 fi
 if [ -d "/etc/kernel/postinst.d/4.14.89-Re4son-v8+" ]; then
-  run-parts -v --report --exit-on-error --arg=4.14.89-Re4son-v8+ --arg=/boot/kernel8.img /etc/kernel/postinst.d/4.14.89-Re4son-v8+
+  run-parts -v --report --exit-on-error --arg=4.14.89-Re4son-v8+ --arg=/boot/kernel8-alt.img /etc/kernel/postinst.d/4.14.89-Re4son-v8+
 fi
 #DEBHELPER#

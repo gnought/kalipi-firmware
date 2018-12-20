@@ -11,7 +11,6 @@ dpkg-divert --package rpikernelhack --divert /usr/share/rpikernelhack/bcm2710-rp
 dpkg-divert --package rpikernelhack --divert /usr/share/rpikernelhack/bcm2710-rpi-cm3.dtb /boot/bcm2710-rpi-cm3.dtb
 dpkg-divert --package rpikernelhack --divert /usr/share/rpikernelhack/kernel.img /boot/kernel.img
 dpkg-divert --package rpikernelhack --divert /usr/share/rpikernelhack/kernel7.img /boot/kernel7.img
-dpkg-divert --package rpikernelhack --divert /usr/share/rpikernelhack/kernel8.img /boot/kernel8.img
 dpkg-divert --package rpikernelhack --divert /usr/share/rpikernelhack/kernel8-alt.img /boot/kernel8-alt.img
 dpkg-divert --package rpikernelhack --divert /usr/share/rpikernelhack/COPYING.linux /boot/COPYING.linux
 dpkg-divert --package rpikernelhack --divert /usr/share/rpikernelhack/overlays/35-hat.dtbo /boot/overlays/35-hat.dtbo
@@ -189,7 +188,7 @@ fi
 if [ -d "/etc/kernel/preinst.d" ]; then
   run-parts -v --report --exit-on-error --arg=4.14.89-Re4son+ --arg=/boot/kernel.img /etc/kernel/preinst.d
   run-parts -v --report --exit-on-error --arg=4.14.89-Re4son-v7+ --arg=/boot/kernel7.img /etc/kernel/preinst.d
-  run-parts -v --report --exit-on-error --arg=4.14.89-Re4son-v8+ --arg=/boot/kernel8.img /etc/kernel/preinst.d
+  run-parts -v --report --exit-on-error --arg=4.14.89-Re4son-v8+ --arg=/boot/kernel8-alt.img /etc/kernel/preinst.d
 fi
 if [ -d "/etc/kernel/preinst.d/4.14.89-Re4son+" ]; then
   run-parts -v --report --exit-on-error --arg=4.14.89-Re4son+ --arg=/boot/kernel.img /etc/kernel/preinst.d/4.14.89-Re4son+
@@ -198,6 +197,6 @@ if [ -d "/etc/kernel/preinst.d/4.14.89-Re4son-v7+" ]; then
   run-parts -v --report --exit-on-error --arg=4.14.89-Re4son-v7+ --arg=/boot/kernel7.img /etc/kernel/preinst.d/4.14.89-Re4son-v7+
 fi
 if [ -d "/etc/kernel/preinst.d/4.14.89-Re4son-v8+" ]; then
-  run-parts -v --report --exit-on-error --arg=4.14.89-Re4son-v8+ --arg=/boot/kernel8.img /etc/kernel/preinst.d/4.14.89-Re4son-v8+
+  run-parts -v --report --exit-on-error --arg=4.14.89-Re4son-v8+ --arg=/boot/kernel8-alt.img /etc/kernel/preinst.d/4.14.89-Re4son-v8+
 fi
 #DEBHELPER#
