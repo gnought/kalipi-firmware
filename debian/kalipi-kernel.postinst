@@ -74,6 +74,16 @@ if [ -f /usr/share/rpikernelhack/overlays/README ]; then
 	dpkg-divert --package rpikernelhack --remove --rename /boot/overlays/README
 	sync
 fi
+if [ -f /usr/share/rpikernelhack/overlays/35-hat.dtbo ]; then
+	rm -f /boot/overlays/35-hat.dtbo
+	dpkg-divert --package rpikernelhack --remove --rename /boot/overlays/35-hat.dtbo
+	sync
+fi
+if [ -f /usr/share/rpikernelhack/overlays/4dpi-32.dtbo ]; then
+	rm -f /boot/overlays/4dpi-32.dtbo
+	dpkg-divert --package rpikernelhack --remove --rename /boot/overlays/4dpi-32.dtbo
+	sync
+fi
 if [ -f /usr/share/rpikernelhack/overlays/adau1977-adc.dtbo ]; then
 	rm -f /boot/overlays/adau1977-adc.dtbo
 	dpkg-divert --package rpikernelhack --remove --rename /boot/overlays/adau1977-adc.dtbo
@@ -212,6 +222,16 @@ fi
 if [ -f /usr/share/rpikernelhack/overlays/dwc2.dtbo ]; then
 	rm -f /boot/overlays/dwc2.dtbo
 	dpkg-divert --package rpikernelhack --remove --rename /boot/overlays/dwc2.dtbo
+	sync
+fi
+if [ -f /usr/share/rpikernelhack/overlays/elecfreaks22-overlay.dtb ]; then
+	rm -f /boot/overlays/elecfreaks22-overlay.dtb
+	dpkg-divert --package rpikernelhack --remove --rename /boot/overlays/elecfreaks22-overlay.dtb
+	sync
+fi
+if [ -f /usr/share/rpikernelhack/overlays/elecfreaks22.dtbo ]; then
+	rm -f /boot/overlays/elecfreaks22.dtbo
+	dpkg-divert --package rpikernelhack --remove --rename /boot/overlays/elecfreaks22.dtbo
 	sync
 fi
 if [ -f /usr/share/rpikernelhack/overlays/enc28j60-spi2.dtbo ]; then
@@ -392,6 +412,16 @@ fi
 if [ -f /usr/share/rpikernelhack/overlays/iqaudio-digi-wm8804-audio.dtbo ]; then
 	rm -f /boot/overlays/iqaudio-digi-wm8804-audio.dtbo
 	dpkg-divert --package rpikernelhack --remove --rename /boot/overlays/iqaudio-digi-wm8804-audio.dtbo
+	sync
+fi
+if [ -f /usr/share/rpikernelhack/overlays/jbtek-overlay.dtb ]; then
+	rm -f /boot/overlays/jbtek-overlay.dtb
+	dpkg-divert --package rpikernelhack --remove --rename /boot/overlays/jbtek-overlay.dtb
+	sync
+fi
+if [ -f /usr/share/rpikernelhack/overlays/jbtek.dtbo ]; then
+	rm -f /boot/overlays/jbtek.dtbo
+	dpkg-divert --package rpikernelhack --remove --rename /boot/overlays/jbtek.dtbo
 	sync
 fi
 if [ -f /usr/share/rpikernelhack/overlays/jedec-spi-nor.dtbo ]; then
@@ -634,6 +664,16 @@ if [ -f /usr/share/rpikernelhack/overlays/rra-digidac1-wm8741-audio.dtbo ]; then
 	dpkg-divert --package rpikernelhack --remove --rename /boot/overlays/rra-digidac1-wm8741-audio.dtbo
 	sync
 fi
+if [ -f /usr/share/rpikernelhack/overlays/sainsmart32-overlay.dtb ]; then
+	rm -f /boot/overlays/sainsmart32-overlay.dtb
+	dpkg-divert --package rpikernelhack --remove --rename /boot/overlays/sainsmart32-overlay.dtb
+	sync
+fi
+if [ -f /usr/share/rpikernelhack/overlays/sainsmart32.dtbo ]; then
+	rm -f /boot/overlays/sainsmart32.dtbo
+	dpkg-divert --package rpikernelhack --remove --rename /boot/overlays/sainsmart32.dtbo
+	sync
+fi
 if [ -f /usr/share/rpikernelhack/overlays/sc16is750-i2c.dtbo ]; then
 	rm -f /boot/overlays/sc16is750-i2c.dtbo
 	dpkg-divert --package rpikernelhack --remove --rename /boot/overlays/sc16is750-i2c.dtbo
@@ -812,6 +852,36 @@ fi
 if [ -f /usr/share/rpikernelhack/overlays/w1-gpio.dtbo ]; then
 	rm -f /boot/overlays/w1-gpio.dtbo
 	dpkg-divert --package rpikernelhack --remove --rename /boot/overlays/w1-gpio.dtbo
+	sync
+fi
+if [ -f /usr/share/rpikernelhack/overlays/waveshare32b-overlay.dtb ]; then
+	rm -f /boot/overlays/waveshare32b-overlay.dtb
+	dpkg-divert --package rpikernelhack --remove --rename /boot/overlays/waveshare32b-overlay.dtb
+	sync
+fi
+if [ -f /usr/share/rpikernelhack/overlays/waveshare32b.dtbo ]; then
+	rm -f /boot/overlays/waveshare32b.dtbo
+	dpkg-divert --package rpikernelhack --remove --rename /boot/overlays/waveshare32b.dtbo
+	sync
+fi
+if [ -f /usr/share/rpikernelhack/overlays/waveshare35a-overlay.dtb ]; then
+	rm -f /boot/overlays/waveshare35a-overlay.dtb
+	dpkg-divert --package rpikernelhack --remove --rename /boot/overlays/waveshare35a-overlay.dtb
+	sync
+fi
+if [ -f /usr/share/rpikernelhack/overlays/waveshare35a.dtbo ]; then
+	rm -f /boot/overlays/waveshare35a.dtbo
+	dpkg-divert --package rpikernelhack --remove --rename /boot/overlays/waveshare35a.dtbo
+	sync
+fi
+if [ -f /usr/share/rpikernelhack/overlays/waveshare35b-overlay.dtb ]; then
+	rm -f /boot/overlays/waveshare35b-overlay.dtb
+	dpkg-divert --package rpikernelhack --remove --rename /boot/overlays/waveshare35b-overlay.dtb
+	sync
+fi
+if [ -f /usr/share/rpikernelhack/overlays/waveshare35b.dtbo ]; then
+	rm -f /boot/overlays/waveshare35b.dtbo
+	dpkg-divert --package rpikernelhack --remove --rename /boot/overlays/waveshare35b.dtbo
 	sync
 fi
 if [ -f /usr/share/rpikernelhack/overlays/wittypi.dtbo ]; then
