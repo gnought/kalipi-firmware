@@ -1,4 +1,8 @@
 #!/bin/sh
+if ! grep -q boot /proc/mounts; then
+    mount /boot
+fi
+
 mkdir -p /usr/share/rpikernelhack/overlays
 mkdir -p /boot/overlays
 dpkg-divert --package rpikernelhack --divert /usr/share/rpikernelhack/bcm2708-rpi-0-w.dtb /boot/bcm2708-rpi-0-w.dtb

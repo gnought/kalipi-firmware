@@ -54,11 +54,6 @@ if [ -f /usr/share/rpikernelhack/kernel8-alt.img ]; then
 	dpkg-divert --package rpikernelhack --remove --rename /boot/kernel8-alt.img
 	sync
 fi
-if [ -f /usr/share/rpikernelhack/kernel8-alt.img ]; then
-	rm -f /boot/kernel-alt.img
-	dpkg-divert --package rpikernelhack --remove --rename /boot/kernel8-alt.img
-	sync
-fi
 if [ -f /usr/share/rpikernelhack/COPYING.linux ]; then
 	rm -f /boot/COPYING.linux
 	dpkg-divert --package rpikernelhack --remove --rename /boot/COPYING.linux

@@ -14,11 +14,11 @@
 
 override_dh_install:
 	dh_install
-	rm debian/libraspberrypi0/opt/vc/lib/libEGL.so
-	rm debian/libraspberrypi0/opt/vc/lib/libGLESv2.so
-	rm debian/libraspberrypi0/opt/vc/lib/libOpenVG.so
-	rm debian/libraspberrypi0/opt/vc/lib/libWFC.so
-	rm debian/libraspberrypi0/opt/vc/lib/libGLESv1_CM.so
+	rm -f debian/libraspberrypi0/opt/vc/lib/libEGL.so
+	rm -f debian/libraspberrypi0/opt/vc/lib/libGLESv2.so
+	rm -f debian/libraspberrypi0/opt/vc/lib/libOpenVG.so
+	rm -f debian/libraspberrypi0/opt/vc/lib/libWFC.so
+	rm -f debian/libraspberrypi0/opt/vc/lib/libGLESv1_CM.so
 
 override_dh_fixperms:
 	dh_fixperms

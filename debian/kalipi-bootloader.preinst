@@ -24,6 +24,10 @@ if [ -f "/boot/recovery.elf" ]; then
   else
     mount /boot
   fi
+else
+  if ! grep -q boot /proc/mounts; then
+    mount /boot
+  fi
 fi
 
 dpkg-divert --package rpikernelhack --divert /usr/share/rpikernelhack/start.elf /boot/start.elf

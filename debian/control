@@ -59,7 +59,7 @@ Architecture: armel armhf arm64
 Breaks: raspberrypi-bootloader
 Replaces: raspberrypi-bootloader
 Depends: ${misc:Depends}
-Recommends: raspberrypi-kernel
+Recommends: kalipi-kernel
 Description: Kali-Pi bootloader
  This package contains the Kali-Pi firmware and bootloader.
 
@@ -70,7 +70,7 @@ Depends: ${misc:Depends}
 Breaks: raspberrypi-kernel
 Replaces: raspberrypi-kernel
 Provides: linux-image
-Description: Kali-Pi bootloader
+Description: Kali-Pi linux kernel
  This package contains the Kali-Pi Linux kernel.
 
 Package: kalipi-kernel-headers
