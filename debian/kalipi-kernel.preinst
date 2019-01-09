@@ -74,6 +74,8 @@ for file in bcm2708-rpi-0-w.dtb \
             overlays/hy28a.dtbo \
             overlays/hy28b-2017.dtbo \
             overlays/hy28b.dtbo \
+            overlays/hyperpixel-gpio-backlight.dtbo \
+            overlays/hyperpixel.dtbo \
             overlays/i2c-bcm2708.dtbo \
             overlays/i2c-gpio.dtbo \
             overlays/i2c-mux.dtbo \
