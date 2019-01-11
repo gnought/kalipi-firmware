@@ -5,6 +5,12 @@ fi
 
 mkdir -p /usr/share/rpikernelhack/overlays
 mkdir -p /boot/overlays
+# https://git.dpkg.org/cgit/dpkg/dpkg.git/commit/?id=599e3c1a9f3be8687c00b681f107e7b98bb454ae
+# We have to add "--no-rename" explicitly for dpkg versions >= 1.19.1
+# But this will fail for versions < 1.19.1 so we detect the version to choose the right command line below
+# to be compatible with older versions as well as Raspbian and other distros
+VER=$(dpkg-query -f='${Version}' --show dpkg)
+MINVER=1.19.1
 for file in bcm2708-rpi-0-w.dtb \
             bcm2708-rpi-b-plus.dtb \
             bcm2708-rpi-b.dtb \
@@ -184,7 +190,11 @@ for file in bcm2708-rpi-0-w.dtb \
             overlays/w1-gpio-pullup.dtbo \
             overlays/w1-gpio.dtbo \
             overlays/wittypi.dtbo; do
-    dpkg-divert --package rpikernelhack --divert /usr/share/rpikernelhack/$file --no-rename /boot/$file
+    if $(dpkg --compare-versions $VER ge $MINVER); then
+        dpkg-divert --package rpikernelhack --divert /usr/share/rpikernelhack/$file --no-rename /boot/$file
+    else
+	dpkg-divert --package rpikernelhack --divert /usr/share/rpikernelhack/$file /boot/$file
+    fi
 done
 if [ -f /etc/default/kalipi-kernel ]; then
   . /etc/default/kalipi-kernel
