@@ -8,15 +8,17 @@ Homepage: https://re4son-kernel.com
 Vcs-Git: git@github.com:re4son/Kali-Pi-firmware.git
 Vcs-Browser: https://github.com/Re4son/Kali-Pi-firmware
 
-Package: kalipi-re4son-firmware
-Section: kernel
-Architecture: armel armhf arm64
-Depends: ${shlibs:Depends}, ${misc:Depends}
-Breaks: raspberrypi-re4son-firmware
-Replaces: raspberrypi-re4son-firmware
-Description: Additional Kali-Pi Pi firmware
- This package contains  firmware that may not be included in the standard
- OS image, such as nexmon firmware for the broadcom wifi chips.
+#### 4.19.y is currently not supported by nexmon
+#### let's not build this package until it is needed
+##Package: kalipi-re4son-firmware
+##Section: kernel
+##Architecture: armel armhf arm64
+##Depends: ${shlibs:Depends}, ${misc:Depends}
+##Breaks: raspberrypi-re4son-firmware
+##Replaces: raspberrypi-re4son-firmware
+##Description: Additional Kali-Pi Pi firmware
+## This package contains  firmware that may not be included in the standard
+## OS image, such as nexmon firmware for the broadcom wifi chips.
 
 Package: libraspberrypi0
 Section: libs
