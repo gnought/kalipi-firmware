@@ -24,31 +24,14 @@ if [ -f "/boot/recovery.elf" ]; then
   else
     mount /boot
   fi
-else
-  if ! grep -q boot /proc/mounts; then
-    mount /boot
-  fi
 fi
-# https://git.dpkg.org/cgit/dpkg/dpkg.git/commit/?id=599e3c1a9f3be8687c00b681f107e7b98bb454ae
-# We have to add "--no-rename" explicitly for dpkg versions >= 1.19.1
-# But this will fail for versions < 1.19.1 so we detect the version to choose the right command line below
-# to be compatible with older versions as well as Raspbian and other distros
-VER=$(dpkg-query -f='${Version}' --show dpkg)
-MINVER=1.19.1
-for file in start.elf \
-            start_cd.elf \
-	        start_db.elf \
-		    start_x.elf \
-		    fixup.dat \
-		    fixup_cd.dat \
-		    fixup_db.dat \
-		    fixup_x.dat \
-		    bootcode.bin \
-		    LICENCE.broadcom; do
-                if $(dpkg --compare-versions $VER ge $MINVER); then
-		    dpkg-divert --package rpikernelhack --divert /usr/share/rpikernelhack/$file --no-rename /boot/$file
-		else
-		    dpkg-divert --package rpikernelhack --divert /usr/share/rpikernelhack/$file /boot/$file
-		fi
-done
+
+dpkg-divert --package rpikernelhack --divert /usr/share/rpikernelhack/start.elf /boot/start.elf
+dpkg-divert --package rpikernelhack --divert /usr/share/rpikernelhack/start_cd.elf /boot/start_cd.elf
+dpkg-divert --package rpikernelhack --divert /usr/share/rpikernelhack/start_x.elf /boot/start_x.elf
+dpkg-divert --package rpikernelhack --divert /usr/share/rpikernelhack/fixup.dat /boot/fixup.dat
+dpkg-divert --package rpikernelhack --divert /usr/share/rpikernelhack/fixup_cd.dat /boot/fixup_cd.dat
+dpkg-divert --package rpikernelhack --divert /usr/share/rpikernelhack/fixup_x.dat /boot/fixup_x.dat
+dpkg-divert --package rpikernelhack --divert /usr/share/rpikernelhack/bootcode.bin /boot/bootcode.bin
+dpkg-divert --package rpikernelhack --divert /usr/share/rpikernelhack/LICENCE.broadcom /boot/LICENCE.broadcom
 #DEBHELPER#

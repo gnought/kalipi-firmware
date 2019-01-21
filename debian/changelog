@@ -1,3 +1,9 @@
+kalipi-firmware (20190116kali-1) kali-rolling; urgency=medium
+
+  * firmware as of c589f89f8df058f8aaac563227fb912a4e1dc88c
+
+ -- Re4son <re4son@re4son-kernel.com>  Mon, 21 Jan 2019 14:17:46 +1100
+
 kalipi-firmware (20190109kali-1) kali-rolling; urgency=medium
 
   * Add hyperpixel overlays
