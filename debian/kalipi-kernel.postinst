@@ -17,6 +17,7 @@ for file in bcm2708-rpi-0-w.dtb \
             overlays/3dlab-nano-player.dtbo \
             overlays/adau1977-adc.dtbo \
             overlays/adau7002-simple.dtbo \
+	    overlays/audiosense-pi.dtbo \
             overlays/ads1015.dtbo \
             overlays/ads1115.dtbo \
             overlays/ads7846.dtbo \
@@ -70,6 +71,8 @@ for file in bcm2708-rpi-0-w.dtb \
             overlays/hy28b.dtbo \
 	    overlays/hyperpixel-gpio-backlight.dtbo \
             overlays/hyperpixel.dtbo \
+	    overlays/hyperpixel4.dtbo \
+	    overlays/hyperpixel4-touch.dtbo \
             overlays/i2c-bcm2708.dtbo \
             overlays/i2c-gpio.dtbo \
             overlays/i2c-mux.dtbo \
