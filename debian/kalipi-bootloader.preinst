@@ -7,12 +7,10 @@ if [ -f "/boot/recovery.elf" ]; then
     echo "Could not determine root partition"
     exit 1
   fi
-
   if ! grep -qE "/dev/mmcblk0p1\s+/boot" /etc/fstab; then
     echo "Unexpected fstab entry"
     exit 1
   fi
-
   boot="/dev/mmcblk0p$((rootnum-1))"
   root="/dev/mmcblk0p${rootnum}"
   sed /etc/fstab -i -e "s|^.* / |${root}  / |"
@@ -24,10 +22,6 @@ if [ -f "/boot/recovery.elf" ]; then
   else
     mount /boot
   fi
-else
-  if ! grep -q boot /proc/mounts; then
-    mount /boot
-  fi
 fi
 # https://git.dpkg.org/cgit/dpkg/dpkg.git/commit/?id=599e3c1a9f3be8687c00b681f107e7b98bb454ae
 # We have to add "--no-rename" explicitly for dpkg versions >= 1.19.1
@@ -35,20 +29,20 @@ fi
 # to be compatible with older versions as well as Raspbian and other distros
 VER=$(dpkg-query -f='${Version}' --show dpkg)
 MINVER=1.19.1
-for file in start.elf \
+for file in \
+            start.elf \
             start_cd.elf \
-	        start_db.elf \
-		    start_x.elf \
-		    fixup.dat \
-		    fixup_cd.dat \
-		    fixup_db.dat \
-		    fixup_x.dat \
-		    bootcode.bin \
-		    LICENCE.broadcom; do
-                if $(dpkg --compare-versions $VER ge $MINVER); then
-		    dpkg-divert --package rpikernelhack --divert /usr/share/rpikernelhack/$file --no-rename /boot/$file
-		else
-		    dpkg-divert --package rpikernelhack --divert /usr/share/rpikernelhack/$file /boot/$file
-		fi
+            start_x.elf \
+            fixup.dat \
+            fixup_cd.dat \
+            fixup_x.dat \
+            bootcode.bin \
+            LICENCE.broadcom \
+            ;do
+    if $(dpkg --compare-versions $VER ge $MINVER); then
+        dpkg-divert --package rpikernelhack --divert /usr/share/rpikernelhack/$file --no-rename /boot/$file
+    else
+	dpkg-divert --package rpikernelhack --divert /usr/share/rpikernelhack/$file /boot/$file
+    fi
 done
 #DEBHELPER#

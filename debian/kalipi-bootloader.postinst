@@ -1,16 +1,16 @@
 #!/bin/sh
-for file in /boot/start.elf \
-            /boot/start_cd.elf \
-            /boot/start_db.elf \
-	    /boot/start_x.elf \
-	    /boot/fixup.dat \
-	    /boot/fixup_cd.dat \
-	    /boot/fixup_db.dat \
-	    /boot/fixup_x.dat \
-	    /boot/bootcode.bin \
-	    /boot/LICENCE.broadcom; do
+for file in \
+            start.elf \
+            start_cd.elf \
+            start_x.elf \
+            fixup.dat \
+            fixup_cd.dat \
+            fixup_x.dat \
+            bootcode.bin \
+            LICENCE.broadcom \
+            ; do
     rm -f $file
-    dpkg-divert --package rpikernelhack --remove --rename $file
+    dpkg-divert --package rpikernelhack --remove --rename /boot/$file
     sync
 done
 #DEBHELPER#

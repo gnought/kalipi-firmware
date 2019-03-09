@@ -7,26 +7,58 @@ fi
 
 version=`cat ../extra/uname_string | cut -f 3 -d ' ' | tr -d +`-Re4son
 
+#     create kalipi-kernel preinst/postinst scripts
+##    headers
+
+###   kalipi-kernel.postinst
 printf "#!/bin/sh\n" > kalipi-kernel.postinst
-printf "#!/bin/sh\n" > kalipi-kernel.preinst
+printf 'for file in kernel.img \\\n            kernel7.img \\\n            kernel8-alt.img \\\n' >> kalipi-kernel.postinst
 
-printf "mkdir -p /usr/share/rpikernelhack/overlays\n" >> kalipi-kernel.preinst
-printf "mkdir -p /boot/overlays\n" >> kalipi-kernel.preinst
+###   kalipi-kernel.preinst
+cat <<EOF > kalipi-kernel.preinst
+#!/bin/sh
 
-for FN in ../boot/*.dtb ../boot/kernel*.img ../boot/COPYING.linux ../boot/overlays/*; do
-  if ! [ -d "$FN" ]; then
+if ! grep -q boot /proc/mounts; then
+    mount /boot
+fi
+
+mkdir -p /usr/share/rpikernelhack/overlays
+mkdir -p /boot/overlays
+# https://git.dpkg.org/cgit/dpkg/dpkg.git/commit/?id=599e3c1a9f3be8687c00b681f107e7b98bb454ae
+# We have to add "--no-rename" explicitly for dpkg versions >= 1.19.1
+# But this will fail for versions < 1.19.1 so we detect the version to choose the right command line below
+# to be compatible with older versions as well as Raspbian and other distros
+VER=\$(dpkg-query -f='\${Version}' --show dpkg)
+MINVER=1.19.1
+for file in kernel.img \\
+            kernel7.img \\
+            kernel8-alt.img \\
+EOF
+
+
+##    content
+
+for FN in ../boot/*.dtb ../boot/COPYING.linux ../boot/overlays/*; do
+  if ! [ -d "\$FN" ]; then
     FN=${FN#../boot/}
-    printf "if [ -f /usr/share/rpikernelhack/$FN ]; then\n" >> kalipi-kernel.postinst
-    printf "	rm -f /boot/$FN\n" >> kalipi-kernel.postinst
-    printf "	dpkg-divert --package rpikernelhack --remove --rename /boot/$FN\n" >> kalipi-kernel.postinst
-    printf "	sync\n" >> kalipi-kernel.postinst
-    printf "fi\n" >> kalipi-kernel.postinst
-
-    printf "dpkg-divert --package rpikernelhack --divert /usr/share/rpikernelhack/$FN /boot/$FN\n" >> kalipi-kernel.preinst
+    printf "            $FN" >> kalipi-kernel.preinst
+    printf ' \\\n' >> kalipi-kernel.preinst
+    printf "            $FN" >> kalipi-kernel.postinst
+    printf ' \\\n' >> kalipi-kernel.postinst
   fi
 done
 
+
+##    footer
+###   kalipi-kernel.preinst
 cat <<EOF >> kalipi-kernel.preinst
+            ;do
+    if \$(dpkg --compare-versions \$VER ge \$MINVER); then
+        dpkg-divert --package rpikernelhack --divert /usr/share/rpikernelhack/\$file --no-rename /boot/\$file
+    else
+	dpkg-divert --package rpikernelhack --divert /usr/share/rpikernelhack/\$file /boot/\$file
+    fi
+done
 if [ -f /etc/default/kalipi-kernel ]; then
   . /etc/default/kalipi-kernel
   INITRD=\${INITRD:-"No"}
@@ -50,14 +82,21 @@ if [ -d "/etc/kernel/preinst.d/${version}-v8+" ]; then
 fi
 EOF
 
+###   kalipi-kernel.postinst
 cat <<EOF >> kalipi-kernel.postinst
+            ; do
+    if [ -f /usr/share/rpikernelhack/\$file ]; then
+        rm -f /boot/\$file
+        dpkg-divert --package rpikernelhack --remove --rename /boot/\$file
+        sync
+    fi
+done
 if [ -f /etc/default/kalipi-kernel ]; then
   . /etc/default/kalipi-kernel
   INITRD=\${INITRD:-"No"}
   export INITRD
   RPI_INITRD=\${RPI_INITRD:-"No"}
   export RPI_INITRD
-
 fi
 if [ -d "/etc/kernel/postinst.d" ]; then
   run-parts -v --report --exit-on-error --arg=${version}+ --arg=/boot/kernel.img /etc/kernel/postinst.d
@@ -75,10 +114,12 @@ if [ -d "/etc/kernel/postinst.d/${version}-v8+" ]; then
 fi
 EOF
 
+#     Create all other installation scripts
 printf "#DEBHELPER#\n" >> kalipi-kernel.postinst
 printf "#DEBHELPER#\n" >> kalipi-kernel.preinst
 
 printf "#!/bin/sh\n" > kalipi-bootloader.postinst
+printf 'for file in \\\n' >> kalipi-bootloader.postinst
 printf "#!/bin/sh\n" > kalipi-bootloader.preinst
 
 printf "mkdir -p /usr/share/rpikernelhack\n" >> kalipi-bootloader.preinst
@@ -91,12 +132,10 @@ if [ -f "/boot/recovery.elf" ]; then
     echo "Could not determine root partition"
     exit 1
   fi
-
   if ! grep -qE "/dev/mmcblk0p1\s+/boot" /etc/fstab; then
     echo "Unexpected fstab entry"
     exit 1
   fi
-
   boot="/dev/mmcblk0p\$((rootnum-1))"
   root="/dev/mmcblk0p\${rootnum}"
   sed /etc/fstab -i -e "s|^.* / |\${root}  / |"
@@ -109,22 +148,47 @@ if [ -f "/boot/recovery.elf" ]; then
     mount /boot
   fi
 fi
-
+# https://git.dpkg.org/cgit/dpkg/dpkg.git/commit/?id=599e3c1a9f3be8687c00b681f107e7b98bb454ae
+# We have to add "--no-rename" explicitly for dpkg versions >= 1.19.1
+# But this will fail for versions < 1.19.1 so we detect the version to choose the right command line below
+# to be compatible with older versions as well as Raspbian and other distros
+VER=\$(dpkg-query -f='\${Version}' --show dpkg)
+MINVER=1.19.1
+for file in \\
 EOF
 
 for FN in ../boot/*.elf ../boot/*.dat ../boot/*.bin ../boot/LICENCE.broadcom; do
-  if ! [ -d "$FN" ]; then
+  if ! [ -d "\$FN" ]; then
     FN=${FN#../boot/}
-    printf "rm -f /boot/$FN\n" >> kalipi-bootloader.postinst
-    printf "dpkg-divert --package rpikernelhack --remove --rename /boot/$FN\n" >> kalipi-bootloader.postinst
-    printf "sync\n" >> kalipi-bootloader.postinst
-
-    printf "dpkg-divert --package rpikernelhack --divert /usr/share/rpikernelhack/$FN /boot/$FN\n" >> kalipi-bootloader.preinst
+    printf "            $FN" >> kalipi-bootloader.preinst
+    printf ' \\\n' >> kalipi-bootloader.preinst
+    printf "            $FN" >> kalipi-bootloader.postinst
+    printf ' \\\n' >> kalipi-bootloader.postinst
   fi
 done
 
-printf "#DEBHELPER#\n" >> kalipi-bootloader.postinst
-printf "#DEBHELPER#\n" >> kalipi-bootloader.preinst
+cat <<EOF >> kalipi-bootloader.preinst
+            ;do
+    if \$(dpkg --compare-versions \$VER ge \$MINVER); then
+        dpkg-divert --package rpikernelhack --divert /usr/share/rpikernelhack/\$file --no-rename /boot/\$file
+    else
+	dpkg-divert --package rpikernelhack --divert /usr/share/rpikernelhack/\$file /boot/\$file
+    fi
+done
+#DEBHELPER#
+EOF
+
+cat <<EOF >> kalipi-bootloader.postinst
+            ; do
+    rm -f \$file
+    dpkg-divert --package rpikernelhack --remove --rename /boot/\$file
+    sync
+done
+#DEBHELPER#
+EOF
+
+
+
 
 printf "#!/bin/sh\n" > kalipi-kernel.prerm
 printf "#!/bin/sh\n" > kalipi-kernel.postrm
@@ -137,7 +201,6 @@ if [ -f /etc/default/kalipi-kernel ]; then
   export INITRD
   RPI_INITRD=\${RPI_INITRD:-"No"}
   export RPI_INITRD
-
 fi
 if [ -d "/etc/kernel/prerm.d" ]; then
   run-parts -v --report --exit-on-error --arg=${version}+ --arg=/boot/kernel.img /etc/kernel/prerm.d
@@ -162,7 +225,6 @@ if [ -f /etc/default/kalipi-kernel ]; then
   export INITRD
   RPI_INITRD=\${RPI_INITRD:-"No"}
   export RPI_INITRD
-
 fi
 if [ -d "/etc/kernel/postrm.d" ]; then
   run-parts -v --report --exit-on-error --arg=${version}+ --arg=/boot/kernel.img /etc/kernel/postrm.d
@@ -187,18 +249,15 @@ if [ -f /etc/default/kalipi-kernel ]; then
   export INITRD
   RPI_INITRD=\${RPI_INITRD:-"No"}
   export RPI_INITRD
-
 fi
 if [ -d "/etc/kernel/header_postinst.d" ]; then
   run-parts -v --verbose --exit-on-error --arg=${version}+ /etc/kernel/header_postinst.d
   run-parts -v --verbose --exit-on-error --arg=${version}-v7+ /etc/kernel/header_postinst.d
   run-parts -v --verbose --exit-on-error --arg=${version}-v8+ /etc/kernel/header_postinst.d
 fi
-
 if [ -d "/etc/kernel/header_postinst.d/${version}+" ]; then
   run-parts -v --verbose --exit-on-error --arg=${version}+ /etc/kernel/header_postinst.d/${version}+
 fi
-
 if [ -d "/etc/kernel/header_postinst.d/${version}-v7+" ]; then
   run-parts -v --verbose --exit-on-error --arg=${version}-v7+ /etc/kernel/header_postinst.d/${version}-v7+
 fi
@@ -210,3 +269,4 @@ EOF
 printf "#DEBHELPER#\n" >> kalipi-kernel.prerm
 printf "#DEBHELPER#\n" >> kalipi-kernel.postrm
 printf "#DEBHELPER#\n" >> kalipi-kernel-headers.postinst
+

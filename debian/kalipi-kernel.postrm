@@ -5,7 +5,6 @@ if [ -f /etc/default/kalipi-kernel ]; then
   export INITRD
   RPI_INITRD=${RPI_INITRD:-"No"}
   export RPI_INITRD
-
 fi
 if [ -d "/etc/kernel/postrm.d" ]; then
   run-parts -v --report --exit-on-error --arg=4.14.93-Re4son+ --arg=/boot/kernel.img /etc/kernel/postrm.d

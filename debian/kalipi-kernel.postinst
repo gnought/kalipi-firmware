@@ -1,5 +1,8 @@
 #!/bin/sh
-for file in bcm2708-rpi-0-w.dtb \
+for file in kernel.img \
+            kernel7.img \
+            kernel8-alt.img \
+            bcm2708-rpi-0-w.dtb \
             bcm2708-rpi-b-plus.dtb \
             bcm2708-rpi-b.dtb \
             bcm2708-rpi-cm.dtb \
@@ -7,17 +10,13 @@ for file in bcm2708-rpi-0-w.dtb \
             bcm2710-rpi-3-b-plus.dtb \
             bcm2710-rpi-3-b.dtb \
             bcm2710-rpi-cm3.dtb \
-            kernel.img \
-            kernel7.img \
-            kernel8-alt.img \
             COPYING.linux \
-            overlays/README \
             overlays/35-hat.dtbo \
-            overlays/4dpi-32.dtbo \
             overlays/3dlab-nano-player.dtbo \
+            overlays/4dpi-32.dtbo \
+            overlays/README \
             overlays/adau1977-adc.dtbo \
             overlays/adau7002-simple.dtbo \
-	    overlays/audiosense-pi.dtbo \
             overlays/ads1015.dtbo \
             overlays/ads1115.dtbo \
             overlays/ads7846.dtbo \
@@ -34,6 +33,7 @@ for file in bcm2708-rpi-0-w.dtb \
             overlays/audioinjector-addons.dtbo \
             overlays/audioinjector-ultra.dtbo \
             overlays/audioinjector-wm8731-audio.dtbo \
+            overlays/audiosense-pi.dtbo \
             overlays/audremap.dtbo \
             overlays/balena-fin.dtbo \
             overlays/bmp085_i2c-sensor.dtbo \
@@ -69,10 +69,10 @@ for file in bcm2708-rpi-0-w.dtb \
             overlays/hy28a.dtbo \
             overlays/hy28b-2017.dtbo \
             overlays/hy28b.dtbo \
-	    overlays/hyperpixel-gpio-backlight.dtbo \
+            overlays/hyperpixel-gpio-backlight.dtbo \
             overlays/hyperpixel.dtbo \
-	    overlays/hyperpixel4.dtbo \
-	    overlays/hyperpixel4-touch.dtbo \
+            overlays/hyperpixel4-touch.dtbo \
+            overlays/hyperpixel4.dtbo \
             overlays/i2c-bcm2708.dtbo \
             overlays/i2c-gpio.dtbo \
             overlays/i2c-mux.dtbo \
@@ -172,15 +172,16 @@ for file in bcm2708-rpi-0-w.dtb \
             overlays/vc4-kms-kippah-7inch.dtbo \
             overlays/vc4-kms-v3d.dtbo \
             overlays/vga666.dtbo \
+            overlays/w1-gpio-pullup.dtbo \
+            overlays/w1-gpio.dtbo \
+            overlays/waveshare32b-overlay.dtb \
+            overlays/waveshare32b.dtbo \
             overlays/waveshare35a-overlay.dtb \
             overlays/waveshare35a.dtbo \
             overlays/waveshare35b-overlay.dtb \
             overlays/waveshare35b.dtbo \
-            overlays/waveshare32b-overlay.dtb \
-            overlays/waveshare32b.dtbo \
-            overlays/w1-gpio-pullup.dtbo \
-            overlays/w1-gpio.dtbo \
-            overlays/wittypi.dtbo; do
+            overlays/wittypi.dtbo \
+            ; do
     if [ -f /usr/share/rpikernelhack/$file ]; then
         rm -f /boot/$file
         dpkg-divert --package rpikernelhack --remove --rename /boot/$file
@@ -193,7 +194,6 @@ if [ -f /etc/default/kalipi-kernel ]; then
   export INITRD
   RPI_INITRD=${RPI_INITRD:-"No"}
   export RPI_INITRD
-
 fi
 if [ -d "/etc/kernel/postinst.d" ]; then
   run-parts -v --report --exit-on-error --arg=4.14.93-Re4son+ --arg=/boot/kernel.img /etc/kernel/postinst.d
