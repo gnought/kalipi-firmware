@@ -77,6 +77,7 @@ for file in kernel.img \
             overlays/hifiberry-amp.dtbo \
             overlays/hifiberry-dac.dtbo \
             overlays/hifiberry-dacplus.dtbo \
+            overlays/hifiberry-dacplusadc.dtbo \
             overlays/hifiberry-digi-pro.dtbo \
             overlays/hifiberry-digi.dtbo \
             overlays/hy28a.dtbo \
@@ -104,7 +105,6 @@ for file in kernel.img \
             overlays/jedec-spi-nor.dtbo \
             overlays/justboom-dac.dtbo \
             overlays/justboom-digi.dtbo \
-            overlays/lirc-rpi.dtbo \
             overlays/ltc294x.dtbo \
             overlays/mbed-dac.dtbo \
             overlays/mcp23017.dtbo \
@@ -113,6 +113,7 @@ for file in kernel.img \
             overlays/mcp2515-can1.dtbo \
             overlays/mcp3008.dtbo \
             overlays/mcp3202.dtbo \
+            overlays/mcp342x.dtbo \
             overlays/media-center.dtbo \
             overlays/midi-uart0.dtbo \
             overlays/midi-uart1.dtbo \
@@ -171,6 +172,7 @@ for file in kernel.img \
             overlays/spi2-1cs.dtbo \
             overlays/spi2-2cs.dtbo \
             overlays/spi2-3cs.dtbo \
+            overlays/ssd1306.dtbo \
             overlays/superaudioboard.dtbo \
             overlays/sx150x.dtbo \
             overlays/tc358743-audio.dtbo \
@@ -209,17 +211,17 @@ if [ -f /etc/default/kalipi-kernel ]; then
   export RPI_INITRD
 fi
 if [ -d "/etc/kernel/preinst.d" ]; then
-  run-parts -v --report --exit-on-error --arg=4.14.93-Re4son+ --arg=/boot/kernel.img /etc/kernel/preinst.d
-  run-parts -v --report --exit-on-error --arg=4.14.93-Re4son-v7+ --arg=/boot/kernel7.img /etc/kernel/preinst.d
-  run-parts -v --report --exit-on-error --arg=4.14.93-Re4son-v8+ --arg=/boot/kernel8-alt.img /etc/kernel/preinst.d
+  run-parts -v --report --exit-on-error --arg=4.19.29-Re4son+ --arg=/boot/kernel.img /etc/kernel/preinst.d
+  run-parts -v --report --exit-on-error --arg=4.19.29-Re4son-v7+ --arg=/boot/kernel7.img /etc/kernel/preinst.d
+  run-parts -v --report --exit-on-error --arg=4.19.29-Re4son-v8+ --arg=/boot/kernel8-alt.img /etc/kernel/preinst.d
 fi
-if [ -d "/etc/kernel/preinst.d/4.14.93-Re4son+" ]; then
-  run-parts -v --report --exit-on-error --arg=4.14.93-Re4son+ --arg=/boot/kernel.img /etc/kernel/preinst.d/4.14.93-Re4son+
+if [ -d "/etc/kernel/preinst.d/4.19.29-Re4son+" ]; then
+  run-parts -v --report --exit-on-error --arg=4.19.29-Re4son+ --arg=/boot/kernel.img /etc/kernel/preinst.d/4.19.29-Re4son+
 fi
-if [ -d "/etc/kernel/preinst.d/4.14.93-Re4son-v7+" ]; then
-  run-parts -v --report --exit-on-error --arg=4.14.93-Re4son-v7+ --arg=/boot/kernel7.img /etc/kernel/preinst.d/4.14.93-Re4son-v7+
+if [ -d "/etc/kernel/preinst.d/4.19.29-Re4son-v7+" ]; then
+  run-parts -v --report --exit-on-error --arg=4.19.29-Re4son-v7+ --arg=/boot/kernel7.img /etc/kernel/preinst.d/4.19.29-Re4son-v7+
 fi
-if [ -d "/etc/kernel/preinst.d/4.14.93-Re4son-v8+" ]; then
-  run-parts -v --report --exit-on-error --arg=4.14.93-Re4son-v8+ --arg=/boot/kernel8-alt.img /etc/kernel/preinst.d/4.14.93-Re4son-v8+
+if [ -d "/etc/kernel/preinst.d/4.19.29-Re4son-v8+" ]; then
+  run-parts -v --report --exit-on-error --arg=4.19.29-Re4son-v8+ --arg=/boot/kernel8-alt.img /etc/kernel/preinst.d/4.19.29-Re4son-v8+
 fi
 #DEBHELPER#

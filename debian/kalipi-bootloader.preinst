@@ -32,9 +32,11 @@ MINVER=1.19.1
 for file in \
             start.elf \
             start_cd.elf \
+            start_db.elf \
             start_x.elf \
             fixup.dat \
             fixup_cd.dat \
+            fixup_db.dat \
             fixup_x.dat \
             bootcode.bin \
             LICENCE.broadcom \
