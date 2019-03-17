@@ -76,7 +76,7 @@ Description: Kali-Pi linux kernel
 Package: kalipi-kernel-headers
 Section: kernel
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}
+Depends: ${shlibs:Depends}, ${misc:Depends}, libssl-dev
 Replaces: raspberrypi-kernel-headers
 Breaks: raspberrypi-kernel-headers
 Provides: linux-headers
