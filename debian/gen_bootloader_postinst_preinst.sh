@@ -264,15 +264,15 @@ fi
 if [ -d "/etc/kernel/header_postinst.d/${version}-v8+" ]; then
   run-parts -v --verbose --exit-on-error --arg=${version}-v8+ /etc/kernel/header_postinst.d/${version}-v8+
 fi
-if [ -d "/usr/src/linux-headers-${version}+" ]; then
-  (cd /usr/src/linux-headers-${version}+; make -s scripts)
-fi
-if [ -d "/usr/src/linux-headers-${version}-v7+" ]; then
-  (cd /usr/src/linux-headers-${version}-v7+; make -s scripts)
-fi
-if [ -d "/usr/src/linux-headers-${version}-v8+" ]; then
-  (cd /usr/src/linux-headers-${version}-v8+; make -s scripts)
-fi
+#if [ -d "/usr/src/linux-headers-${version}+" ]; then
+#  (cd /usr/src/linux-headers-${version}+; make -s scripts)
+#fi
+#if [ -d "/usr/src/linux-headers-${version}-v7+" ]; then
+#  (cd /usr/src/linux-headers-${version}-v7+; make -s scripts)
+#fi
+#if [ -d "/usr/src/linux-headers-${version}-v8+" ]; then
+#  (cd /usr/src/linux-headers-${version}-v8+; make -s scripts)
+#fi
 EOF
 
 printf "#DEBHELPER#\n" >> kalipi-kernel.prerm
