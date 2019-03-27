@@ -11,7 +11,7 @@ for file in \
             bootcode.bin \
             LICENCE.broadcom \
             ; do
-    rm -f $file
+    rm -f /boot/$file
     dpkg-divert --package rpikernelhack --remove --rename /boot/$file
     sync
 done
