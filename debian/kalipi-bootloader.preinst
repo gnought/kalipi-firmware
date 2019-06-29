@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/sh -e
 mkdir -p /usr/share/rpikernelhack
 if [ -f "/boot/recovery.elf" ]; then
   echo "/boot appears to be NOOBS recovery partition. Applying fix."
@@ -31,10 +31,18 @@ VER=$(dpkg-query -f='${Version}' --show dpkg)
 MINVER=1.19.1
 for file in \
             start.elf \
+            start4.elf \
+            start4cd.elf \
+            start4db.elf \
+            start4x.elf \
             start_cd.elf \
             start_db.elf \
             start_x.elf \
             fixup.dat \
+            fixup4.dat \
+            fixup4cd.dat \
+            fixup4db.dat \
+            fixup4x.dat \
             fixup_cd.dat \
             fixup_db.dat \
             fixup_x.dat \
@@ -44,7 +52,7 @@ for file in \
     if $(dpkg --compare-versions $VER ge $MINVER); then
         dpkg-divert --package rpikernelhack --divert /usr/share/rpikernelhack/$file --no-rename /boot/$file
     else
-	dpkg-divert --package rpikernelhack --divert /usr/share/rpikernelhack/$file /boot/$file
+	dpkg-divert --package rpikernelhack --divert /usr/share/rpikernelhack/$file --rename /boot/$file
     fi
 done
 #DEBHELPER#

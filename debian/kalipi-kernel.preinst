@@ -14,18 +14,21 @@ VER=$(dpkg-query -f='${Version}' --show dpkg)
 MINVER=1.19.1
 for file in kernel.img \
             kernel7.img \
+            kernel7l.img \
             kernel8-alt.img \
-            bcm2708-rpi-0-w.dtb \
+            kernel8l-alt.img \
             bcm2708-rpi-b-plus.dtb \
             bcm2708-rpi-b.dtb \
             bcm2708-rpi-cm.dtb \
+            bcm2708-rpi-zero-w.dtb \
+            bcm2708-rpi-zero.dtb \
             bcm2709-rpi-2-b.dtb \
             bcm2710-rpi-3-b-plus.dtb \
             bcm2710-rpi-3-b.dtb \
             bcm2710-rpi-cm3.dtb \
+            bcm2711-rpi-4-b.dtb \
             COPYING.linux \
             overlays/35-hat.dtbo \
-            overlays/3dlab-nano-player.dtbo \
             overlays/4dpi-32.dtbo \
             overlays/README \
             overlays/adau1977-adc.dtbo \
@@ -55,6 +58,7 @@ for file in kernel.img \
             overlays/dionaudio-loco.dtbo \
             overlays/dpi18.dtbo \
             overlays/dpi24.dtbo \
+            overlays/draws.dtbo \
             overlays/dwc-otg.dtbo \
             overlays/dwc2.dtbo \
             overlays/elecfreaks22-overlay.dtb \
@@ -87,6 +91,7 @@ for file in kernel.img \
             overlays/hyperpixel.dtbo \
             overlays/hyperpixel4-touch.dtbo \
             overlays/hyperpixel4.dtbo \
+            overlays/i-sabre-q2m.dtbo \
             overlays/i2c-bcm2708.dtbo \
             overlays/i2c-gpio.dtbo \
             overlays/i2c-mux.dtbo \
@@ -96,7 +101,13 @@ for file in kernel.img \
             overlays/i2c-sensor.dtbo \
             overlays/i2c0-bcm2708.dtbo \
             overlays/i2c1-bcm2708.dtbo \
+            overlays/i2c3.dtbo \
+            overlays/i2c4.dtbo \
+            overlays/i2c5.dtbo \
+            overlays/i2c6.dtbo \
             overlays/i2s-gpio28-31.dtbo \
+            overlays/ilitek251x.dtbo \
+            overlays/iqaudio-codec.dtbo \
             overlays/iqaudio-dac.dtbo \
             overlays/iqaudio-dacplus.dtbo \
             overlays/iqaudio-digi-wm8804-audio.dtbo \
@@ -106,6 +117,7 @@ for file in kernel.img \
             overlays/justboom-dac.dtbo \
             overlays/justboom-digi.dtbo \
             overlays/ltc294x.dtbo \
+            overlays/max98357a.dtbo \
             overlays/mbed-dac.dtbo \
             overlays/mcp23017.dtbo \
             overlays/mcp23s17.dtbo \
@@ -127,6 +139,7 @@ for file in kernel.img \
             overlays/pi3-disable-wifi.dtbo \
             overlays/pi3-miniuart-bt.dtbo \
             overlays/pibell.dtbo \
+            overlays/piglow.dtbo \
             overlays/piscreen.dtbo \
             overlays/piscreen2r.dtbo \
             overlays/pisound.dtbo \
@@ -156,13 +169,13 @@ for file in kernel.img \
             overlays/sc16is752-i2c.dtbo \
             overlays/sc16is752-spi1.dtbo \
             overlays/sdhost.dtbo \
-            overlays/sdio-1bit.dtbo \
             overlays/sdio.dtbo \
             overlays/sdtweak.dtbo \
             overlays/smi-dev.dtbo \
             overlays/smi-nand.dtbo \
             overlays/smi.dtbo \
             overlays/spi-gpio35-39.dtbo \
+            overlays/spi-gpio40-45.dtbo \
             overlays/spi-rtc.dtbo \
             overlays/spi0-cs.dtbo \
             overlays/spi0-hw-cs.dtbo \
@@ -172,6 +185,14 @@ for file in kernel.img \
             overlays/spi2-1cs.dtbo \
             overlays/spi2-2cs.dtbo \
             overlays/spi2-3cs.dtbo \
+            overlays/spi3-1cs.dtbo \
+            overlays/spi3-2cs.dtbo \
+            overlays/spi4-1cs.dtbo \
+            overlays/spi4-2cs.dtbo \
+            overlays/spi5-1cs.dtbo \
+            overlays/spi5-2cs.dtbo \
+            overlays/spi6-1cs.dtbo \
+            overlays/spi6-2cs.dtbo \
             overlays/ssd1306.dtbo \
             overlays/superaudioboard.dtbo \
             overlays/sx150x.dtbo \
@@ -181,7 +202,11 @@ for file in kernel.img \
             overlays/tpm-slb9670.dtbo \
             overlays/uart0.dtbo \
             overlays/uart1.dtbo \
-            overlays/upstream-aux-interrupt.dtbo \
+            overlays/uart2.dtbo \
+            overlays/uart3.dtbo \
+            overlays/uart4.dtbo \
+            overlays/uart5.dtbo \
+            overlays/udrc.dtbo \
             overlays/upstream.dtbo \
             overlays/vc4-fkms-v3d.dtbo \
             overlays/vc4-kms-kippah-7inch.dtbo \
@@ -211,17 +236,25 @@ if [ -f /etc/default/kalipi-kernel ]; then
   export RPI_INITRD
 fi
 if [ -d "/etc/kernel/preinst.d" ]; then
-  run-parts -v --report --exit-on-error --arg=4.19.29-Re4son+ --arg=/boot/kernel.img /etc/kernel/preinst.d
-  run-parts -v --report --exit-on-error --arg=4.19.29-Re4son-v7+ --arg=/boot/kernel7.img /etc/kernel/preinst.d
-  run-parts -v --report --exit-on-error --arg=4.19.29-Re4son-v8+ --arg=/boot/kernel8-alt.img /etc/kernel/preinst.d
+  run-parts -v --report --exit-on-error --arg=4.19.55-Re4son+ --arg=/boot/kernel.img /etc/kernel/preinst.d
+  run-parts -v --report --exit-on-error --arg=4.19.55-Re4son-v7+ --arg=/boot/kernel7.img /etc/kernel/preinst.d
+  run-parts -v --report --exit-on-error --arg=4.19.55-Re4son-v7l+ --arg=/boot/kernel7l.img /etc/kernel/preinst.d
+  run-parts -v --report --exit-on-error --arg=4.19.55-Re4son-v8+ --arg=/boot/kernel8-alt.img /etc/kernel/preinst.d
+  run-parts -v --report --exit-on-error --arg=4.19.55-Re4son-v8l+ --arg=/boot/kernel8l-alt.img /etc/kernel/preinst.d
 fi
-if [ -d "/etc/kernel/preinst.d/4.19.29-Re4son+" ]; then
-  run-parts -v --report --exit-on-error --arg=4.19.29-Re4son+ --arg=/boot/kernel.img /etc/kernel/preinst.d/4.19.29-Re4son+
+if [ -d "/etc/kernel/preinst.d/4.19.55-Re4son+" ]; then
+  run-parts -v --report --exit-on-error --arg=4.19.55-Re4son+ --arg=/boot/kernel.img /etc/kernel/preinst.d/4.19.55-Re4son+
 fi
-if [ -d "/etc/kernel/preinst.d/4.19.29-Re4son-v7+" ]; then
-  run-parts -v --report --exit-on-error --arg=4.19.29-Re4son-v7+ --arg=/boot/kernel7.img /etc/kernel/preinst.d/4.19.29-Re4son-v7+
+if [ -d "/etc/kernel/preinst.d/4.19.55-Re4son-v7+" ]; then
+  run-parts -v --report --exit-on-error --arg=4.19.55-Re4son-v7+ --arg=/boot/kernel7.img /etc/kernel/preinst.d/4.19.55-Re4son-v7+
 fi
-if [ -d "/etc/kernel/preinst.d/4.19.29-Re4son-v8+" ]; then
-  run-parts -v --report --exit-on-error --arg=4.19.29-Re4son-v8+ --arg=/boot/kernel8-alt.img /etc/kernel/preinst.d/4.19.29-Re4son-v8+
+if [ -d "/etc/kernel/preinst.d/4.19.55-Re4son-v7l+" ]; then
+  run-parts -v --report --exit-on-error --arg=4.19.55-Re4son-v7l+ --arg=/boot/kernel7l.img /etc/kernel/preinst.d/4.19.55-Re4son-v7l+
+fi
+if [ -d "/etc/kernel/preinst.d/4.19.55-Re4son-v8+" ]; then
+  run-parts -v --report --exit-on-error --arg=4.19.55-Re4son-v8+ --arg=/boot/kernel8-alt.img /etc/kernel/preinst.d/4.19.55-Re4son-v8+
+fi
+if [ -d "/etc/kernel/preinst.d/4.19.55-Re4son-v8l+" ]; then
+  run-parts -v --report --exit-on-error --arg=4.19.55-Re4son-v8l+ --arg=/boot/kernel8l-alt.img /etc/kernel/preinst.d/4.19.55-Re4son-v8l+
 fi
 #DEBHELPER#
