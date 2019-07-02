@@ -3,7 +3,6 @@ for file in kernel.img \
             kernel7.img \
             kernel7l.img \
             kernel8-alt.img \
-            kernel8l-alt.img \
             bcm2708-rpi-b-plus.dtb \
             bcm2708-rpi-b.dtb \
             bcm2708-rpi-cm.dtb \
@@ -215,6 +214,16 @@ for file in kernel.img \
         sync
     fi
 done
+## Check if we have enough space available in /boot for kernel8l-alt.img, otherwise leave the diversion in place
+file=kernel8l-alt.img
+if [ -f /usr/share/rpikernelhack/$file ]; then
+    AVAIL=`df --output=avail /dev/mmcblk0p1 | grep -v Avail`
+    if [ "$AVAIL"  -gt "25000" ]; then
+        rm -f /boot/$file
+        dpkg-divert --package rpikernelhack --rename --remove /boot/$file
+        sync
+    fi
+fi
 if [ -f /etc/default/kalipi-kernel ]; then
   . /etc/default/kalipi-kernel
   INITRD=${INITRD:-"No"}
