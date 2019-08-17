@@ -14,7 +14,9 @@ VER=$(dpkg-query -f='${Version}' --show dpkg)
 MINVER=1.19.1
 for file in kernel.img \
             kernel7.img \
+            kernel7l.img \
             kernel8-alt.img \
+            kernel8l-alt.img \
             bcm2708-rpi-b-plus.dtb \
             bcm2708-rpi-b.dtb \
             bcm2708-rpi-cm.dtb \
@@ -29,6 +31,7 @@ for file in kernel.img \
             overlays/35-hat.dtbo \
             overlays/4dpi-32.dtbo \
             overlays/README \
+            overlays/act-led.dtbo \
             overlays/adau1977-adc.dtbo \
             overlays/adau7002-simple.dtbo \
             overlays/ads1015.dtbo \
@@ -54,6 +57,8 @@ for file in kernel.img \
             overlays/dht11.dtbo \
             overlays/dionaudio-loco-v2.dtbo \
             overlays/dionaudio-loco.dtbo \
+            overlays/disable-bt.dtbo \
+            overlays/disable-wifi.dtbo \
             overlays/dpi18.dtbo \
             overlays/dpi24.dtbo \
             overlays/draws.dtbo \
@@ -80,6 +85,7 @@ for file in kernel.img \
             overlays/hifiberry-dac.dtbo \
             overlays/hifiberry-dacplus.dtbo \
             overlays/hifiberry-dacplusadc.dtbo \
+            overlays/hifiberry-dacplusadcpro.dtbo \
             overlays/hifiberry-digi-pro.dtbo \
             overlays/hifiberry-digi.dtbo \
             overlays/hy28a.dtbo \
@@ -98,7 +104,9 @@ for file in kernel.img \
             overlays/i2c-rtc.dtbo \
             overlays/i2c-sensor.dtbo \
             overlays/i2c0-bcm2708.dtbo \
+            overlays/i2c0.dtbo \
             overlays/i2c1-bcm2708.dtbo \
+            overlays/i2c1.dtbo \
             overlays/i2c3.dtbo \
             overlays/i2c4.dtbo \
             overlays/i2c5.dtbo \
@@ -127,6 +135,7 @@ for file in kernel.img \
             overlays/media-center.dtbo \
             overlays/midi-uart0.dtbo \
             overlays/midi-uart1.dtbo \
+            overlays/miniuart-bt.dtbo \
             overlays/mmc.dtbo \
             overlays/mpu6050.dtbo \
             overlays/mz61581.dtbo \
@@ -234,17 +243,25 @@ if [ -f /etc/default/kalipi-kernel ]; then
   export RPI_INITRD
 fi
 if [ -d "/etc/kernel/preinst.d" ]; then
-  run-parts -v --report --exit-on-error --arg=4.19.56-Re4son+ --arg=/boot/kernel.img /etc/kernel/preinst.d
-  run-parts -v --report --exit-on-error --arg=4.19.56-Re4son-v7+ --arg=/boot/kernel7.img /etc/kernel/preinst.d
-  run-parts -v --report --exit-on-error --arg=4.19.56-Re4son-v8+ --arg=/boot/kernel8-alt.img /etc/kernel/preinst.d
+  run-parts -v --report --exit-on-error --arg=4.19.66-Re4son+ --arg=/boot/kernel.img /etc/kernel/preinst.d
+  run-parts -v --report --exit-on-error --arg=4.19.66-Re4son-v7+ --arg=/boot/kernel7.img /etc/kernel/preinst.d
+  run-parts -v --report --exit-on-error --arg=4.19.66-Re4son-v7l+ --arg=/boot/kernel7l.img /etc/kernel/preinst.d
+  run-parts -v --report --exit-on-error --arg=4.19.66-Re4son-v8+ --arg=/boot/kernel8-alt.img /etc/kernel/preinst.d
+  run-parts -v --report --exit-on-error --arg=4.19.66-Re4son-v8l+ --arg=/boot/kernel8l-alt.img /etc/kernel/preinst.d
 fi
-if [ -d "/etc/kernel/preinst.d/4.19.56-Re4son+" ]; then
-  run-parts -v --report --exit-on-error --arg=4.19.56-Re4son+ --arg=/boot/kernel.img /etc/kernel/preinst.d/4.19.56-Re4son+
+if [ -d "/etc/kernel/preinst.d/4.19.66-Re4son+" ]; then
+  run-parts -v --report --exit-on-error --arg=4.19.66-Re4son+ --arg=/boot/kernel.img /etc/kernel/preinst.d/4.19.66-Re4son+
 fi
-if [ -d "/etc/kernel/preinst.d/4.19.56-Re4son-v7+" ]; then
-  run-parts -v --report --exit-on-error --arg=4.19.56-Re4son-v7+ --arg=/boot/kernel7.img /etc/kernel/preinst.d/4.19.56-Re4son-v7+
+if [ -d "/etc/kernel/preinst.d/4.19.66-Re4son-v7+" ]; then
+  run-parts -v --report --exit-on-error --arg=4.19.66-Re4son-v7+ --arg=/boot/kernel7.img /etc/kernel/preinst.d/4.19.66-Re4son-v7+
 fi
-if [ -d "/etc/kernel/preinst.d/4.19.56-Re4son-v8+" ]; then
-  run-parts -v --report --exit-on-error --arg=4.19.56-Re4son-v8+ --arg=/boot/kernel8-alt.img /etc/kernel/preinst.d/4.19.56-Re4son-v8+
+if [ -d "/etc/kernel/preinst.d/4.19.66-Re4son-v7l+" ]; then
+  run-parts -v --report --exit-on-error --arg=4.19.66-Re4son-v7l+ --arg=/boot/kernel7l.img /etc/kernel/preinst.d/4.19.66-Re4son-v7l+
+fi
+if [ -d "/etc/kernel/preinst.d/4.19.66-Re4son-v8+" ]; then
+  run-parts -v --report --exit-on-error --arg=4.19.66-Re4son-v8+ --arg=/boot/kernel8-alt.img /etc/kernel/preinst.d/4.19.66-Re4son-v8+
+fi
+if [ -d "/etc/kernel/preinst.d/4.19.66-Re4son-v8l+" ]; then
+  run-parts -v --report --exit-on-error --arg=4.19.66-Re4son-v8l+ --arg=/boot/kernel8l-alt.img /etc/kernel/preinst.d/4.19.66-Re4son-v8l+
 fi
 #DEBHELPER#
