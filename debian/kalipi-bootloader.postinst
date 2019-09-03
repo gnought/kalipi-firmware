@@ -1,5 +1,6 @@
 #!/bin/sh -e
 for file in \
+            armstub8-gic.bin \
             start.elf \
             start4.elf \
             start4cd.elf \
