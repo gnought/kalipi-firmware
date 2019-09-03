@@ -30,6 +30,7 @@ fi
 VER=$(dpkg-query -f='${Version}' --show dpkg)
 MINVER=1.19.1
 for file in \
+            armstub8-gic.bin \
             start.elf \
             start4.elf \
             start4cd.elf \
