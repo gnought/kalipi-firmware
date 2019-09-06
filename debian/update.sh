@@ -33,7 +33,9 @@ rm -f extra/*symvers extra/*.map boot/*.img
 version=`cat extra/uname_string | cut -f 3 -d ' ' | tr -d +`-Re4son
 version6="$version+"
 version7="$version-v7+"
+version7l="$version-v7l+"
 version8="$version-v8+"
+version8l="$version-v8l+"
 
 (cd debian; ./gen_bootloader_postinst_preinst.sh)
 dch -v $DEBVER -D kali-rolling --force-distribution "firmware as of ${FIRMWARE_COMMIT}"
