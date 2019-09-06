@@ -1,7 +1,9 @@
 #!/bin/sh
 for file in kernel.img \
             kernel7.img \
+            kernel7l.img \
             kernel8-alt.img \
+            kernel8l-alt.img \
             bcm2708-rpi-b-plus.dtb \
             bcm2708-rpi-b.dtb \
             bcm2708-rpi-cm.dtb \
@@ -216,7 +218,7 @@ for file in kernel.img \
             ; do
     if [ -f /usr/share/rpikernelhack/$file ]; then
         rm -f /boot/$file
-        dpkg-divert --package rpikernelhack --remove --rename /boot/$file
+        dpkg-divert --package rpikernelhack --rename --remove /boot/$file
         sync
     fi
 done
@@ -230,7 +232,9 @@ fi
 if [ -d "/etc/kernel/postinst.d" ]; then
   run-parts -v --report --exit-on-error --arg=4.19.69-Re4son+ --arg=/boot/kernel.img /etc/kernel/postinst.d
   run-parts -v --report --exit-on-error --arg=4.19.69-Re4son-v7+ --arg=/boot/kernel7.img /etc/kernel/postinst.d
+  run-parts -v --report --exit-on-error --arg=4.19.69-Re4son-v7l+ --arg=/boot/kernel7l.img /etc/kernel/postinst.d
   run-parts -v --report --exit-on-error --arg=4.19.69-Re4son-v8+ --arg=/boot/kernel8-alt.img /etc/kernel/postinst.d
+  run-parts -v --report --exit-on-error --arg=4.19.69-Re4son-v8l+ --arg=/boot/kernel8l-alt.img /etc/kernel/postinst.d
 fi
 if [ -d "/etc/kernel/postinst.d/4.19.69-Re4son+" ]; then
   run-parts -v --report --exit-on-error --arg=4.19.69-Re4son+ --arg=/boot/kernel.img /etc/kernel/postinst.d/4.19.69-Re4son+
@@ -238,7 +242,13 @@ fi
 if [ -d "/etc/kernel/postinst.d/4.19.69-Re4son-v7+" ]; then
   run-parts -v --report --exit-on-error --arg=4.19.69-Re4son-v7+ --arg=/boot/kernel7.img /etc/kernel/postinst.d/4.19.69-Re4son-v7+
 fi
+if [ -d "/etc/kernel/postinst.d/4.19.69-Re4son-v7l+" ]; then
+  run-parts -v --report --exit-on-error --arg=4.19.69-Re4son-v7l+ --arg=/boot/kernel7l.img /etc/kernel/postinst.d/4.19.69-Re4son-v7l+
+fi
 if [ -d "/etc/kernel/postinst.d/4.19.69-Re4son-v8+" ]; then
   run-parts -v --report --exit-on-error --arg=4.19.69-Re4son-v8+ --arg=/boot/kernel8-alt.img /etc/kernel/postinst.d/4.19.69-Re4son-v8+
+fi
+if [ -d "/etc/kernel/postinst.d/4.19.69-Re4son-v8l+" ]; then
+  run-parts -v --report --exit-on-error --arg=4.19.69-Re4son-v8l+ --arg=/boot/kernel8l-alt.img /etc/kernel/postinst.d/4.19.69-Re4son-v8l+
 fi
 #DEBHELPER#
