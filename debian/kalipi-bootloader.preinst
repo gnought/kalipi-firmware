@@ -1,0 +1,58 @@
+#!/bin/sh -e
+mkdir -p /usr/share/rpikernelhack
+if [ -f "/boot/recovery.elf" ]; then
+  echo "/boot appears to be NOOBS recovery partition. Applying fix."
+  rootnum=`cat /proc/cmdline | sed -n 's|.*root=/dev/mmcblk0p\([0-9]*\).*|\1|p'`
+  if [ ! "$rootnum" ];then
+    echo "Could not determine root partition"
+    exit 1
+  fi
+  if ! grep -qE "/dev/mmcblk0p1\s+/boot" /etc/fstab; then
+    echo "Unexpected fstab entry"
+    exit 1
+  fi
+  boot="/dev/mmcblk0p$((rootnum-1))"
+  root="/dev/mmcblk0p${rootnum}"
+  sed /etc/fstab -i -e "s|^.* / |${root}  / |"
+  sed /etc/fstab -i -e "s|^.* /boot |${boot}  /boot |"
+  umount /boot
+  if [ $? -ne 0 ]; then
+    echo "Failed to umount /boot. Remount manually and run sudo apt-get install -f."
+    exit 1
+  else
+    mount /boot
+  fi
+fi
+# https://git.dpkg.org/cgit/dpkg/dpkg.git/commit/?id=599e3c1a9f3be8687c00b681f107e7b98bb454ae
+# We have to add "--no-rename" explicitly for dpkg versions >= 1.19.1
+# But this will fail for versions < 1.19.1 so we detect the version to choose the right command line below
+# to be compatible with older versions as well as Raspbian and other distros
+VER=$(dpkg-query -f='${Version}' --show dpkg)
+MINVER=1.19.1
+for file in \
+            start.elf \
+            start4.elf \
+            start4cd.elf \
+            start4db.elf \
+            start4x.elf \
+            start_cd.elf \
+            start_db.elf \
+            start_x.elf \
+            fixup.dat \
+            fixup4.dat \
+            fixup4cd.dat \
+            fixup4db.dat \
+            fixup4x.dat \
+            fixup_cd.dat \
+            fixup_db.dat \
+            fixup_x.dat \
+            bootcode.bin \
+            LICENCE.broadcom \
+            ;do
+    if $(dpkg --compare-versions $VER ge $MINVER); then
+        dpkg-divert --package rpikernelhack --divert /usr/share/rpikernelhack/$file --no-rename /boot/$file
+    else
+	dpkg-divert --package rpikernelhack --divert /usr/share/rpikernelhack/$file --rename /boot/$file
+    fi
+done
+#DEBHELPER#
