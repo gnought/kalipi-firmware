@@ -17,7 +17,7 @@ fi
 git checkout $UPSTREAM_BRANCH
 git merge $FIRMWARE_COMMIT --no-edit
 git checkout debian
-git merge $UPSTREAM_BRANCH --no-edit -Xtheirs
+git merge $UPSTREAM_BRANCH --no-edit -X theirs
 
 DATE="`git show -s --format=%ct $FIRMWARE_COMMIT`"
 DEBVER="`date -d @$DATE -u +%Y%m%dkali-1`"
@@ -29,6 +29,11 @@ KERNEL_COMMIT="`cat extra/git_hash`"
 echo Cleaning up Raspberrypi firmware ...
 rm -rf headers modules
 rm -f extra/*symvers extra/*.map boot/*.img
+
+echo Pulling back Kali customisations
+git checkout kali debian/gen_bootloader_postinst_preinst.sh
+git checkout kali debian/update.sh
+git checkout kali debian/libraspberrypi*
 
 version=`cat extra/uname_string | cut -f 3 -d ' ' | tr -d +`-Re4son
 version6="$version+"
