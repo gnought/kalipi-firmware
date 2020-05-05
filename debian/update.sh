@@ -6,7 +6,8 @@ fi
 
 old_version=`cat extra/uname_string | cut -f 3 -d ' ' | tr -d +`
 ##UPSTREAM_BRANCH="master"
-UPSTREAM_BRANCH="stable"
+##UPSTREAM_BRANCH="stable"
+UPSTREAM_BRANCH="20354bebcc2a8448128f2348e19e155910d25122"
 
 git fetch --all
 if [ -n "$1" ]; then
