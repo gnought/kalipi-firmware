@@ -5,8 +5,8 @@ if ! [ -f ./debian/update.sh ]; then
 fi
 
 old_version=`cat extra/uname_string | cut -f 3 -d ' ' | tr -d +`
-UPSTREAM_BRANCH="master"
-##UPSTREAM_BRANCH="stable"
+##UPSTREAM_BRANCH="master"
+UPSTREAM_BRANCH="stable"
 
 git fetch --all
 if [ -n "$1" ]; then
