@@ -1,0 +1,87 @@
+Source: kalipi-firmware
+Priority: extra
+Maintainer: Re4son <re4son@re4son-kernel.com>
+Build-Depends: debhelper (>= 8.0.0), quilt
+Standards-Version: 3.9.8
+Section: libs
+Homepage: https://re4son-kernel.com
+Vcs-Git: git@github.com:re4son/Kali-Pi-firmware.git
+Vcs-Browser: https://github.com/Re4son/Kali-Pi-firmware
+
+Package: kalipi-re4son-firmware
+Section: kernel
+Architecture: armel armhf arm64
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Breaks: raspberrypi-re4son-firmware
+Replaces: raspberrypi-re4son-firmware
+Description: Additional Kali-Pi Pi firmware
+ This package contains  firmware that may not be included in the standard
+ OS image, such as nexmon firmware for the broadcom wifi chips.
+
+Package: libraspberrypi0
+Section: libs
+Architecture: armel armhf
+Depends: kalipi-bootloader (= ${binary:Version}), ${shlibs:Depends}, ${misc:Depends}
+Description: EGL/GLES/OpenVG/etc. libraries for the Raspberry Pi's VideoCore IV
+ This package contains implementations of EGL, OpenGL ES, OpenVG, OpenWF
+ Composition, and others for the Raspberry Pi's VideoCore IV multimedia
+ processor.
+
+Package: libraspberrypi-dev
+Section: libdevel
+Architecture: armel armhf
+Depends: libraspberrypi0 (= ${binary:Version}), ${misc:Depends}
+Description: EGL/GLES/OpenVG/etc. libraries for the Raspberry Pi's VideoCore IV (headers)
+ This package contains headers and other development files for implementations
+ of EGL, OpenGL ES, OpenVG, OpenWF Composition, and others for the Raspberry
+ Pi's VideoCore IV multimedia processor.
+
+Package: libraspberrypi-doc
+Section: libdevel
+Architecture: armel armhf
+Depends: libraspberrypi0 (= ${binary:Version}), ${misc:Depends}
+Description: EGL/GLES/OpenVG/etc. libraries for the Raspberry Pi's VideoCore IV (headers)
+ This package contains headers, example code, and other development files for
+ implementations of EGL, OpenGL ES, OpenVG, OpenWF Composition, and others for
+ the Raspberry Pi's VideoCore IV multimedia processor.
+
+Package: libraspberrypi-bin
+Section: misc
+Architecture: armel armhf
+Depends: libraspberrypi0 (= ${binary:Version}), ${misc:Depends}, device-tree-compiler
+Description: Miscellaneous Raspberry Pi utilities
+ This package contains various utilities for interacting with the Raspberry
+ Pi's VideoCore IV.
+
+Package: kalipi-bootloader
+Section: admin
+Architecture: armel armhf arm64
+Breaks: raspberrypi-bootloader
+Replaces: raspberrypi-bootloader
+Depends: ${misc:Depends}
+Recommends: kalipi-kernel
+Description: Kali-Pi bootloader
+ This package contains the Kali-Pi firmware and bootloader.
+
+Package: kalipi-kernel
+Section: kernel
+Architecture: armel armhf arm64
+Depends: ${misc:Depends}
+Breaks: raspberrypi-kernel
+Replaces: raspberrypi-kernel
+Provides: linux-image
+Description: Kali-Pi linux kernel
+ This package contains the Kali-Pi Linux kernel.
+
+Package: kalipi-kernel-headers
+Section: kernel
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Replaces: raspberrypi-kernel-headers
+Breaks: raspberrypi-kernel-headers
+Provides: linux-headers
+Description: Header files for the Kali-Pi Linux kernel
+ This package provides the architecture-specific kernel header files for
+ the Kali-Pi Linux kernel, generally used for building out-of-tree
+ kernel modules.
+
