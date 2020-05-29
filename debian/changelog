@@ -1,0 +1,113 @@
+kalipi-firmware (20200527kali-1) kali-rolling; urgency=medium
+
+  * firmware as of 62fc8c01165a80021054a430182b504f7b877c2d
+
+ -- Re4son <re4son@re4son-kernel.com>  Fri, 29 May 2020 11:33:46 +1000
+
+kalipi-firmware (20200512kali-1) kali-rolling; urgency=medium
+
+  * firmware as of 7449540e3787cc14e9ee7f63690d6569943bce26
+
+ -- Re4son <re4son@re4son-kernel.com>  Mon, 18 May 2020 23:13:48 +1000
+
+kalipi-firmware (20200427kali-1) kali-rolling; urgency=medium
+
+  * firmware as of 20354bebcc2a8448128f2348e19e155910d25122
+
+ -- Re4son <re4son@re4son-kernel.com>  Tue, 05 May 2020 12:23:51 +1000
+
+kalipi-firmware (20200212kali-1) kali-rolling; urgency=medium
+
+  * firmware as of 9a34efbf2fc6a27231607ce91a7cb6bf3bdbc0c5
+
+ -- Re4son <re4son@re4son-kernel.com>  Tue, 05 May 2020 11:56:32 +1000
+
+kalipi-firmware (20200106kali-1) kali-rolling; urgency=medium
+
+  * firmware as of dc5622560a2589a417007156b75db71f52b60d80
+
+ -- Re4son <re4son@re4son-kernel.com>  Tue, 07 Jan 2020 18:28:14 +1100
+
+kalipi-firmware (20200106kali-1) kali-rolling; urgency=medium
+
+  * firmware as of f3a973d104baa04bf6cff22d369336b54790dcaa
+
+ -- Re4son <re4son@re4son-kernel.com>  Tue, 07 Jan 2020 00:54:44 +1100
+
+kalipi-firmware (20191211kali-1) kali-rolling; urgency=medium
+
+  * firmware as of 0c01dbefba45a08c47f8538d5a071a0fba6b7e83
+
+ -- Re4son <re4son@re4son-kernel.com>  Sat, 14 Dec 2019 08:59:54 +1100
+
+kalipi-firmware (20191101kali-1) kali-rolling; urgency=medium
+
+  * firmware as of b79618b5db4e4e7c02f9ad9d3ada51713825313e
+
+ -- Re4son <re4son@re4son-kernel.com>  Tue, 05 Nov 2019 18:13:33 +1100
+
+kalipi-firmware (20191011kali-1) kali-rolling; urgency=medium
+
+  * firmware as of 9f4983548584d4f70e6eec5270125de93a081483
+
+ -- Re4son <re4son@re4son-kernel.com>  Sun, 13 Oct 2019 14:18:20 +1100
+
+kalipi-firmware (20191007kali-1) kali-rolling; urgency=medium
+
+  * firmware as of f8a89246a793911701b9f255bb6ba34a0b93479e
+
+ -- Re4son <re4son@re4son-kernel.com>  Thu, 10 Oct 2019 19:50:51 +1100
+
+kalipi-firmware (20190917kali-1) kali-rolling; urgency=medium
+
+  * firmware as of f8e05108dbb3b5640f48b6b301296e979876836b
+
+ -- Re4son <re4son@re4son-kernel.com>  Wed, 18 Sep 2019 20:49:03 +1000
+
+kalipi-firmware (20190626kali-1) kali-rolling; urgency=medium
+
+  * firmware as of bcf40b5c2b94178c7564fb451098d44968e44af5
+
+ -- Re4son <re4son@re4son-kernel.com>  Sat, 29 Jun 2019 19:16:21 +1000
+
+kalipi-firmware (20190308kali-1) kali-rolling; urgency=medium
+
+  * firmware as of fd15e0700e45d9b7db83e30696aba299b9f2f31d
+
+ -- Re4son <re4son@re4son-kernel.com>  Sat, 16 Mar 2019 10:40:52 +1100
+
+kalipi-firmware (20190116kali-1) kali-rolling; urgency=medium
+
+  * firmware as of c589f89f8df058f8aaac563227fb912a4e1dc88c
+
+ -- Re4son <re4son@re4son-kernel.com>  Mon, 21 Jan 2019 14:17:46 +1100
+
+kalipi-firmware (20190109kali-1) kali-rolling; urgency=medium
+
+  * Add hyperpixel overlays
+
+ -- Re4son <re4son@re4son-kernel.com>  Wed, 09 Jan 2019 21:25:53 +1100
+
+kalipi-firmware (20190107kali-1) kali-rolling; urgency=medium
+
+  * firmware as of 1ea87818b323d08e7bc8e74f930952f36f2f61f4
+
+ -- Re4son <re4son@re4son-kernel.com>  Mon, 07 Jan 2019 21:09:16 +1100
+
+kalipi-firmware (20181218kali-1) kali-rolling; urgency=medium
+
+  * firmware as of 1ea87818b323d08e7bc8e74f930952f36f2f61f4
+
+ -- Re4son <re4son@re4son-kernel.com>  Tue, 18 Dec 2018 11:50:24 +1100
+
+kalipi-firmware (20181112kali-1) kali-rolling; urgency=medium
+
+  * firmware as of 86e3ccc14e43618f82a13e639002199de29a16b1
+
+ -- Re4son <re4son@re4son-kernel.com>  Sun, 18 Nov 2018 13:26:21 +1100
+
+kalipi-firmware (20180924kali-1) kali-rolling; urgency=medium
+
+  * Repackaged for Kali
+
+ -- Re4son <re4son@re4son-kernel.com>  Sat, 13 Oct 2018 11:44:56 +1100
