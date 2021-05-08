@@ -1,20 +1,27 @@
-Source: raspberrypi-firmware
-Priority: optional
-Maintainer: Serge Schneider <serge@raspberrypi.org>
-Build-Depends: debhelper (>= 10),
- bc, flex, bison, libssl-dev, rsync,
- gcc-aarch64-linux-gnu [!arm64 !armhf],
- gcc-arm-linux-gnueabihf [!armhf],
+Source: kalipi-firmware
+Priority: extra
+Maintainer: Re4son <re4son@re4son-kernel.com>
+Build-Depends: debhelper (>= 8.0.0), quilt
 Standards-Version: 3.9.8
 Section: libs
-Homepage: https://github.com/raspberrypi/firmware
-Vcs-Git: git@github.com:RPi-Distro/firmware.git
-Vcs-Browser: https://github.com/RPi-Distro/firmware
+Homepage: https://re4son-kernel.com
+Vcs-Git: git@github.com:re4son/Kali-Pi-firmware.git
+Vcs-Browser: https://github.com/Re4son/Kali-Pi-firmware
+
+Package: kalipi-re4son-firmware
+Section: kernel
+Architecture: armel armhf arm64
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Breaks: raspberrypi-re4son-firmware
+Replaces: raspberrypi-re4son-firmware
+Description: Additional Kali-Pi Pi firmware
+ This package contains  firmware that may not be included in the standard
+ OS image, such as nexmon firmware for the broadcom wifi chips.
 
 Package: libraspberrypi0
 Section: libs
 Architecture: armel armhf
-Depends: raspberrypi-bootloader (= ${binary:Version}), ${shlibs:Depends}, ${misc:Depends}
+Depends: kalipi-bootloader (= ${binary:Version}), ${shlibs:Depends}, ${misc:Depends}
 Description: EGL/GLES/OpenVG/etc. libraries for the Raspberry Pi's VideoCore IV
  This package contains implementations of EGL, OpenGL ES, OpenVG, OpenWF
  Composition, and others for the Raspberry Pi's VideoCore IV multimedia
@@ -46,31 +53,35 @@ Description: Miscellaneous Raspberry Pi utilities
  This package contains various utilities for interacting with the Raspberry
  Pi's VideoCore IV.
 
-Package: raspberrypi-bootloader
+Package: kalipi-bootloader
 Section: admin
 Architecture: armel armhf arm64
+Breaks: raspberrypi-bootloader
+Replaces: raspberrypi-bootloader
 Depends: ${misc:Depends}
-Recommends: raspberrypi-kernel
-Description: Raspberry Pi bootloader
- This package contains the Raspberry Pi firmware and bootloader.
+Recommends: kalipi-kernel
+Description: Kali-Pi bootloader
+ This package contains the Kali-Pi firmware and bootloader.
 
-Package: raspberrypi-kernel
+Package: kalipi-kernel
 Section: kernel
 Architecture: armel armhf arm64
 Depends: ${misc:Depends}
-Breaks: raspberrypi-bootloader (<<1.20160324-1)
-Replaces: raspberrypi-bootloader (<<1.20160324-1)
+Breaks: raspberrypi-kernel
+Replaces: raspberrypi-kernel
 Provides: linux-image
-Description: Raspberry Pi bootloader
- This package contains the Raspberry Pi Linux kernel.
+Description: Kali-Pi linux kernel
+ This package contains the Kali-Pi Linux kernel.
 
-Package: raspberrypi-kernel-headers
+Package: kalipi-kernel-headers
 Section: kernel
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
+Replaces: raspberrypi-kernel-headers
+Breaks: raspberrypi-kernel-headers
 Provides: linux-headers
-Description: Header files for the Raspberry Pi Linux kernel
+Description: Header files for the Kali-Pi Linux kernel
  This package provides the architecture-specific kernel header files for
- the Raspberry Pi Linux kernel, generally used for building out-of-tree
+ the Kali-Pi Linux kernel, generally used for building out-of-tree
  kernel modules.
 
