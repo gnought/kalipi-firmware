@@ -28,6 +28,8 @@ for file in kernel.img \
             bcm2710-rpi-3-b-plus.dtb \
             bcm2710-rpi-3-b.dtb \
             bcm2710-rpi-cm3.dtb \
+            bcm2710-rpi-zero-2-w.dtb \
+            bcm2710-rpi-zero-2.dtb \
             bcm2711-rpi-4-b.dtb \
             bcm2711-rpi-400.dtb \
             bcm2711-rpi-cm4.dtb \
@@ -72,7 +74,6 @@ for file in kernel.img \
             overlays/dpi24.dtbo \
             overlays/draws.dtbo \
             overlays/dwc-otg.dtbo \
-            overlays/dwc2.dtbo \
             overlays/elecfreaks22-overlay.dtb \
             overlays/elecfreaks22.dtbo \
             overlays/enc28j60-spi2.dtbo \
@@ -85,15 +86,13 @@ for file in kernel.img \
             overlays/googlevoicehat-soundcard.dtbo \
             overlays/gpio-fan.dtbo \
             overlays/gpio-ir-tx.dtbo \
-            overlays/gpio-ir.dtbo \
             overlays/gpio-key.dtbo \
             overlays/gpio-no-bank0-irq.dtbo \
             overlays/gpio-no-irq.dtbo \
-            overlays/gpio-poweroff.dtbo \
             overlays/gpio-shutdown.dtbo \
             overlays/hd44780-lcd.dtbo \
-            overlays/hdmi-backlight-hwhack-gpio.dtbo \
             overlays/hifiberry-amp.dtbo \
+            overlays/hifiberry-amp100.dtbo \
             overlays/hifiberry-dac.dtbo \
             overlays/hifiberry-dacplus.dtbo \
             overlays/hifiberry-dacplusadc.dtbo \
@@ -144,7 +143,6 @@ for file in kernel.img \
             overlays/max98357a.dtbo \
             overlays/maxtherm.dtbo \
             overlays/mbed-dac.dtbo \
-            overlays/mcp23017.dtbo \
             overlays/mcp23s17.dtbo \
             overlays/mcp2515-can0.dtbo \
             overlays/mcp2515-can1.dtbo \
@@ -203,6 +201,8 @@ for file in kernel.img \
             overlays/sc16is752-spi1.dtbo \
             overlays/sdhost.dtbo \
             overlays/sdio.dtbo \
+            overlays/seeed-can-fd-hat-v1.dtbo \
+            overlays/seeed-can-fd-hat-v2.dtbo \
             overlays/sh1106-spi.dtbo \
             overlays/smi-dev.dtbo \
             overlays/smi-nand.dtbo \
@@ -259,6 +259,7 @@ for file in kernel.img \
             overlays/waveshare35b-overlay.dtb \
             overlays/waveshare35b.dtbo \
             overlays/wittypi.dtbo \
+            overlays/wm8960-soundcard.dtbo \
             ;do
     if $(dpkg --compare-versions $VER ge $MINVER); then
         dpkg-divert --package rpikernelhack --divert /usr/share/rpikernelhack/$file --no-rename /boot/$file
