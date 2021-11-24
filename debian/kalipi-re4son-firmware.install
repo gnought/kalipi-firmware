@@ -2,8 +2,11 @@ lib/firmware/brcm/brcmfmac43430-sdio.bin
 lib/firmware/brcm/brcmfmac43430-sdio.rpi.bin
 lib/firmware/brcm/brcmfmac43430-sdio.txt
 lib/firmware/brcm/brcmfmac43455-sdio.bin
-lib/firmware/brcm/brcmfmac43455-sdio.rpi.bin
 lib/firmware/brcm/brcmfmac43455-sdio.clm_blob
+lib/firmware/brcm/brcmfmac43455-sdio.nexmon-7_45_154.bin
+lib/firmware/brcm/brcmfmac43455-sdio.nexmon-7_45_189.bin
+lib/firmware/brcm/brcmfmac43455-sdio.nexmon-7_45_206.bin
+lib/firmware/brcm/brcmfmac43455-sdio.rpi.bin
 lib/firmware/brcm/brcmfmac43455-sdio.txt
 lib/firmware/brcm/brcmfmac43456-sdio.bin
 lib/firmware/brcm/brcmfmac43456-sdio.clm_blob
