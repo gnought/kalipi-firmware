@@ -1,0 +1,52 @@
+#!/bin/sh
+# preinst script for raspberrypi-re4son-firmware
+#
+# see: dh_installdeb(1)
+
+set -e
+
+# summary of how this script can be called:
+#        * <new-preinst> `install'
+#        * <new-preinst> `install' <old-version>
+#        * <new-preinst> `upgrade' <old-version>
+#        * <old-preinst> `abort-upgrade' <new-version>
+# for details, see http://www.debian.org/doc/debian-policy/ or
+# the debian-policy package
+
+case "$1" in
+    install)
+	for file in /lib/firmware/brcm/brcmfmac43430-sdio.bin \
+		    /lib/firmware/brcm/brcmfmac43430-sdio.rpi.bin \
+                    /lib/firmware/brcm/brcmfmac43430-sdio.txt \
+                    /lib/firmware/brcm/brcmfmac43436-sdio.bin \
+                    /lib/firmware/brcm/brcmfmac43436-sdio.clm_blob \
+                    /lib/firmware/brcm/brcmfmac43436-sdio.txt \
+                    /lib/firmware/brcm/brcmfmac43436s-sdio.bin \
+                    /lib/firmware/brcm/brcmfmac43436s-sdio.txt \
+                    /lib/firmware/brcm/brcmfmac43455-sdio.bin \
+                    /lib/firmware/brcm/brcmfmac43455-sdio.clm_blob \
+                    /lib/firmware/brcm/brcmfmac43455-sdio.nexmon-7_45_154.bin \
+                    /lib/firmware/brcm/brcmfmac43455-sdio.nexmon-7_45_189.bin \
+                    /lib/firmware/brcm/brcmfmac43455-sdio.nexmon-7_45_206.bin \
+                    /lib/firmware/brcm/brcmfmac43455-sdio.rpi.bin \
+                    /lib/firmware/brcm/brcmfmac43455-sdio.txt \
+                    /lib/firmware/brcm/brcmfmac43456-sdio.bin \
+                    /lib/firmware/brcm/brcmfmac43456-sdio.clm_blob \
+                    /lib/firmware/brcm/brcmfmac43456-sdio.txt; do
+            if ! dpkg-divert --list | grep -F "${file}"; then
+                dpkg-divert --package kalipi-re4son-firmware --add --divert $file.original --rename $file
+            fi
+        done
+    ;;
+
+    upgrade|abort-upgrade)
+    ;;
+
+    *)
+        echo "preinst called with unknown argument \`$1'" >&2
+        exit 1
+    ;;
+esac
+#DEBHELPER#
+
+exit 0

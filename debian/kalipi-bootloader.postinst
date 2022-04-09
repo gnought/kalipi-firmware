@@ -1,0 +1,26 @@
+#!/bin/sh -e
+for file in \
+            start.elf \
+            start4.elf \
+            start4cd.elf \
+            start4db.elf \
+            start4x.elf \
+            start_cd.elf \
+            start_db.elf \
+            start_x.elf \
+            fixup.dat \
+            fixup4.dat \
+            fixup4cd.dat \
+            fixup4db.dat \
+            fixup4x.dat \
+            fixup_cd.dat \
+            fixup_db.dat \
+            fixup_x.dat \
+            bootcode.bin \
+            LICENCE.broadcom \
+            ; do
+    rm -f /boot/$file
+    dpkg-divert --package rpikernelhack --remove --rename /boot/$file
+    sync
+done
+#DEBHELPER#
