@@ -12,7 +12,8 @@ version=`cat ../extra/uname_string | cut -f 3 -d ' ' | tr -d +`-Re4son
 
 ###   kalipi-kernel.postinst
 printf "#!/bin/sh\n" > kalipi-kernel.postinst
-printf 'for file in kernel.img \\\n            kernel7.img \\\n            kernel7l.img \\\n            kernel8-alt.img \\\n            kernel8l-alt.img \\\n' >> kalipi-kernel.postinst
+##printf 'for file in kernel.img \\\n            kernel7.img \\\n            kernel7l.img \\\n            kernel8-alt.img \\\n            kernel8l-alt.img \\\n            config-${version}+ \\\n            config-${version}-v7+ \\\n            config-${version}-v7l+ \\\n            config-${version}-v8+ \\\n            config-${version}-v8l+ \\\n' >> kalipi-kernel.postinst
+printf 'for file in kernel.img \\\n            kernel7.img \\\n            kernel7l.img \\\n            kernel8-alt.img \\\n            kernel8l-alt.img \\\n            config-%s+ \\\n            config-%s-v7+ \\\n            config-%s-v7l+ \\\n            config-%s-v8+ \\\n            config-%s-v8l+ \\\n' "${version}" "${version}" "${version}" "${version}" "${version}" >> kalipi-kernel.postinst
 
 ###   kalipi-kernel.preinst
 cat <<EOF > kalipi-kernel.preinst
@@ -35,6 +36,11 @@ for file in kernel.img \\
             kernel7l.img \\
             kernel8-alt.img \\
             kernel8l-alt.img \\
+            config-${version}+ \\
+            config-${version}-v7+ \\
+            config-${version}-v7l+ \\
+            config-${version}-v8+ \\
+            config-${version}-v8l+ \\
 EOF
 
 

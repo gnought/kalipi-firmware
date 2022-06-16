@@ -1,4 +1,5 @@
 boot/overlays
+boot/*-Re4son*+
 boot/*.dtb
 boot/kernel*.img
 boot/COPYING.linux

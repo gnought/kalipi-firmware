@@ -4,6 +4,11 @@ for file in kernel.img \
             kernel7l.img \
             kernel8-alt.img \
             kernel8l-alt.img \
+            config-5.15.44-Re4son+ \
+            config-5.15.44-Re4son-v7+ \
+            config-5.15.44-Re4son-v7l+ \
+            config-5.15.44-Re4son-v8+ \
+            config-5.15.44-Re4son-v8l+ \
             bcm2708-rpi-b-plus.dtb \
             bcm2708-rpi-b-rev1.dtb \
             bcm2708-rpi-b.dtb \
