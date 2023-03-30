@@ -1,4 +1,2 @@
-headers/usr/src/*-Re4son-v7+ /usr/src/
-headers/usr/src/*-Re4son-v7l+ /usr/src/
-headers/lib/modules/*-Re4son-v7+ /lib/modules/
-headers/lib/modules/*-Re4son-v7l+ /lib/modules/
+headers/usr/src/*-Re4son-v7{,l}+ /usr/src/
+headers/lib/modules/*-Re4son-v7{,l}+ /lib/modules/
